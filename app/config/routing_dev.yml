@@ -1,20 +1,6 @@
 _welcome:
     pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
-
-_demo_secured:
-    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
-    type:     annotation
-
-_demo:
-    resource: "@AcmeDemoBundle/Controller/DemoController.php"
-    type:     annotation
-    prefix:   /demo
-
-_admindemo:
-    resource: "@AdmingeneratorDemoBundle/Controller/ListController.php"
-    type:     annotation
-    prefix:   /admin-demo
+    defaults: { _controller: AdmingeneratorDemoBundle:List:index }
 
 _assetic:
     resource: .
