@@ -57,3 +57,34 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0RC2
+
+[Admingenerator]
+    git=git://github.com/cedriclombardot/Admingenerator.git
+
+[Pagerfanta]
+    git=http://github.com/whiteoctober/Pagerfanta.git
+    target=/pagerfanta
+
+[WhiteOctoberPagerfantaBundle]
+    git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=/bundles/WhiteOctober/PagerfantaBundle
+
+[Behat]
+    git=git://github.com/Behat/Behat.git
+    target=/Behat/Behat
+
+[Gherkin]
+    git=git://github.com/Behat/Gherkin.git
+    target=/Behat/Gherkin
+
+[Mink]
+    git=git://github.com/Behat/Mink.git
+    target=/Behat/Mink
+
+[BehatBundle]
+    git=git://github.com/Behat/BehatBundle.git
+    target=/Behat/BehatBundle
+
+[MinkBundle]
+    git=git://github.com/Behat/MinkBundle.git
+    target=/Behat/MinkBundle
