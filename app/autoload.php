@@ -19,7 +19,7 @@ $loader->registerNamespaces(array(
     'Pagerfanta' => __DIR__.'/../vendor/pagerfanta/src',
 
     //Admingenerator
-    'Admingenerator'        => array(__DIR__.'/../src', __DIR__.'/../vendor/'),
+    'Admingenerator'        => array(__DIR__.'/../src', __DIR__.'/../vendor/bundles'),
 
     //Behat
     'Behat\\BehatBundle'    => __DIR__.'/../vendor/',
