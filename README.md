@@ -1,7 +1,7 @@
 # AdmingeneratorIpsum
 
 This is a symfony2 project to show you how work the Symfony2 admingenerator
-https://github.com/cedriclombardot/Admingenerator
+https://github.com/cedriclombardot/AdmingeneratorGeneratorBundle
 
 # How to install
 
