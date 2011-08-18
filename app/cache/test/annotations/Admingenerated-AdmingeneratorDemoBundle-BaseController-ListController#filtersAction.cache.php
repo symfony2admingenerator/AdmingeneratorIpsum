@@ -1,0 +1,1 @@
+<?php return unserialize('a:1:{i:0;O:57:"Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template":2:{s:11:"' . "\0" . '*' . "\0" . 'template";N;s:7:"' . "\0" . '*' . "\0" . 'vars";a:0:{}}}');
