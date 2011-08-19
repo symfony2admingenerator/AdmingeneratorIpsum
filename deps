@@ -1,67 +1,67 @@
 [symfony]
-    git=http://github.com/symfony/symfony.git
+    git=git://github.com/symfony/symfony.git
     version=v2.0.0
 
 [twig]
-    git=http://github.com/fabpot/Twig.git
+    git=git://github.com/fabpot/Twig.git
     version=v1.1.1
 
 [monolog]
-    git=http://github.com/Seldaek/monolog.git
+    git=git://github.com/Seldaek/monolog.git
     version=1.0.0
 
 [doctrine-common]
-    git=http://github.com/doctrine/common.git
+    git=git://github.com/doctrine/common.git
     version=2.1.0
 
 [doctrine-dbal]
-    git=http://github.com/doctrine/dbal.git
+    git=git://github.com/doctrine/dbal.git
     version=2.1.0
 
 [doctrine]
-    git=http://github.com/doctrine/doctrine2.git
+    git=git://github.com/doctrine/doctrine2.git
     version=2.1.0
 
 [doctrine-fixtures]
-    git=http://github.com/doctrine/data-fixtures.git
+    git=git://github.com/doctrine/data-fixtures.git
 
 [DoctrineFixturesBundle]
     git=git://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
 
 [swiftmailer]
-    git=http://github.com/swiftmailer/swiftmailer.git
+    git=git://github.com/swiftmailer/swiftmailer.git
     version=v4.1.0
 
 [assetic]
-    git=http://github.com/kriswallsmith/assetic.git
+    git=git://github.com/kriswallsmith/assetic.git
     version=v1.0.1
 
 [twig-extensions]
-    git=http://github.com/fabpot/Twig-extensions.git
+    git=git://github.com/fabpot/Twig-extensions.git
 
 [metadata]
-    git=http://github.com/schmittjoh/metadata.git
+    git=git://github.com/schmittjoh/metadata.git
     version=1.0.0
 
 [SensioFrameworkExtraBundle]
-    git=http://github.com/sensio/SensioFrameworkExtraBundle.git
+    git=git://github.com/sensio/SensioFrameworkExtraBundle.git
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    git=git://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
 
 [SensioDistributionBundle]
-    git=http://github.com/sensio/SensioDistributionBundle.git
+    git=git://github.com/sensio/SensioDistributionBundle.git
     target=/bundles/Sensio/Bundle/DistributionBundle
 
 [SensioGeneratorBundle]
-    git=http://github.com/sensio/SensioGeneratorBundle.git
+    git=git://github.com/sensio/SensioGeneratorBundle.git
     target=/bundles/Sensio/Bundle/GeneratorBundle
 
 [AsseticBundle]
-    git=http://github.com/symfony/AsseticBundle.git
+    git=git://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0RC2
 
@@ -70,11 +70,11 @@
     target=/bundles/Admingenerator/GeneratorBundle
 
 [Pagerfanta]
-    git=http://github.com/whiteoctober/Pagerfanta.git
+    git=git://github.com/whiteoctober/Pagerfanta.git
     target=/pagerfanta
 
 [WhiteOctoberPagerfantaBundle]
-    git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    git=git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
     target=/bundles/WhiteOctober/PagerfantaBundle
 
 [Behat]
