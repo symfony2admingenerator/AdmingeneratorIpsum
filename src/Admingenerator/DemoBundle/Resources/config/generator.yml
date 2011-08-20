@@ -21,8 +21,12 @@ builders:
     params:
       title: You're creating a new movie
       display: [ title, is_published ]
+      actions:
+        list: ~
   edit: 
     params:
       title: You're editing the movie "{{ Movie.title }}"
       display: [ title, is_published ]
+      actions:
+        list: ~
   delete: ~ 
