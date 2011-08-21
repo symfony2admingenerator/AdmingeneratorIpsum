@@ -30,6 +30,17 @@ class Producer
     protected $is_published;
     
     /**
+     * @ORM\OneToMany(targetEntity="Admingenerator\DemoBundle\Entity\Movie", mappedBy="producer", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $movies;
+    
+    
+    public function __construct()
+    {
+        $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -77,5 +88,25 @@ class Producer
     public function getIsPublished()
     {
         return $this->is_published;
+    }
+
+    /**
+     * Add movies
+     *
+     * @param Admingenerator\DemoBundle\Entity\Movie $movies
+     */
+    public function addMovies(\Admingenerator\DemoBundle\Entity\Movie $movies)
+    {
+        $this->movies[] = $movies;
+    }
+
+    /**
+     * Get movies
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMovies()
+    {
+        return $this->movies;
     }
 }
