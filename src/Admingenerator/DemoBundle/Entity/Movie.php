@@ -22,11 +22,16 @@ class Movie
      */
     protected $title;
     
-    
     /**
      * @ORM\Column(type="boolean", nullable="true")
      */
     protected $is_published;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Admingenerator\DemoBundle\Entity\Producer", cascade={"all"}, fetch="EAGER")
+     * @ORM\JoinColumn(name="producer_id", referencedColumnName="id")
+     */
+    protected $producer;
 
     /**
      * Get id
@@ -76,5 +81,25 @@ class Movie
     public function getIsPublished()
     {
         return $this->is_published;
+    }
+
+    /**
+     * Set producer
+     *
+     * @param \Admingenerator\DemoBundle\Entity\Producer $producer
+     */
+    public function setProducer(\Admingenerator\DemoBundle\Entity\Producer $producer)
+    {
+        $this->producer = $producer;
+    }
+
+    /**
+     * Get producer
+     *
+     * @return \Admingenerator\DemoBundle\Entity\Producer 
+     */
+    public function getProducer()
+    {
+        return $this->producer;
     }
 }
