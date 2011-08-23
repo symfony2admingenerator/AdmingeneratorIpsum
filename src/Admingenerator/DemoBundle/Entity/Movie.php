@@ -34,9 +34,19 @@ class Movie
     protected $producer;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies")
+     */
+    protected $actors;
+    
+    public function __construct()
+    {
+        $this->actors = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -56,7 +66,7 @@ class Movie
     /**
      * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -86,7 +96,7 @@ class Movie
     /**
      * Set producer
      *
-     * @param \Admingenerator\DemoBundle\Entity\Producer $producer
+     * @param Admingenerator\DemoBundle\Entity\Producer $producer
      */
     public function setProducer(\Admingenerator\DemoBundle\Entity\Producer $producer)
     {
@@ -96,10 +106,30 @@ class Movie
     /**
      * Get producer
      *
-     * @return \Admingenerator\DemoBundle\Entity\Producer 
+     * @return Admingenerator\DemoBundle\Entity\Producer 
      */
     public function getProducer()
     {
         return $this->producer;
+    }
+
+    /**
+     * Add actors
+     *
+     * @param Admingenerator\DemoBundle\Entity\Actor $actors
+     */
+    public function addActors(\Admingenerator\DemoBundle\Entity\Actor $actors)
+    {
+        $this->actors[] = $actors;
+    }
+
+    /**
+     * Get actors
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getActors()
+    {
+        return $this->actors;
     }
 }
