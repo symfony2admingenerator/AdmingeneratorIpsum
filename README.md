@@ -11,9 +11,9 @@ Run in your schell the nexts commands lines
 ./bin/vendors install
 ./rebuild.sh
 ```
-# Dependencies
+# Optionnal dependencies
 
-You should have to install :
+You could install sass and compass if you want to change css :
 
 ```shell
    sudo gem install compass # https://github.com/chriseppstein/compass
