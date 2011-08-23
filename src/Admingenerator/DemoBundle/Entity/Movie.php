@@ -43,6 +43,11 @@ class Movie
         $this->actors = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    public function setActors(\Doctrine\Common\Collections\ArrayCollection $actors)
+    {
+         $this->actors = $actors;
+    }
+    
     /**
      * Get id
      *

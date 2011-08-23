@@ -33,7 +33,7 @@ builders:
   edit: 
     params:
       title: You're editing the movie "{{ Movie.title }}"
-      display: [ title, is_published, producer ]
+      display: [ title, is_published, producer, actors ]
       actions:
         list: ~
   delete: ~ 
