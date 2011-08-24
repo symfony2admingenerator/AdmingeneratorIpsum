@@ -28,6 +28,9 @@ $loader->registerNamespaces(array(
     'Behat\\SahiClient'     => __DIR__.'/../vendor/Behat/SahiClient/src',
     'Behat\\Mink'           => __DIR__.'/../vendor/Behat/Mink/src',
     'Behat\\Gherkin'        => __DIR__.'/../vendor/Behat/Gherkin/src',
+
+    //Menu
+    'Knp'                       => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
