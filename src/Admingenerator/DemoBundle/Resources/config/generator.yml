@@ -4,6 +4,8 @@ params:
   namespace_prefix: Admingenerator
   bundle_name: DemoBundle
   fields: 
+    is_published:
+      help: If you want to see this content on you website
     actors:
       filterOn: actors.id
     producer:
@@ -35,7 +37,9 @@ builders:
   edit: 
     params:
       title: You're editing the movie "{{ Movie.title }}"
-      display: [ title, is_published, producer, actors ]
+      display: 
+        "NONE": [ title ]
+        "Other informations": [ is_published, producer, actors ]
       actions:
         list: ~
   delete: ~ 
