@@ -14,11 +14,20 @@ params:
       getter: producer.name
       addFormOptions:
         property: name
+    release_date:
+      formType: birthday 
+      addFormOptions:
+        years: 
+          .range: 
+            from: <?php echo date("Y"); ?>
+            to: 1950
+            step: 1
+
 builders:
   list:
     params:
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, producer ]
+      display: [ id, title, is_published, producer, release_date ]
       max_per_page: 3
       actions:
         new: ~ 
@@ -27,18 +36,18 @@ builders:
         delete: ~
   filters: 
     params:
-      display: [ title, is_published, producer, actors]
+      display: [ title, is_published, producer, actors, release_date]
   new: 
     params:
       title: You're creating a new movie
-      display: [ title, is_published, producer, actors]
+      display: [ title, is_published, producer, actors, release_date ]
       actions:
         list: ~
   edit: 
     params:
       title: You're editing the movie "{{ Movie.title }}"
       display: 
-        "NONE": [ title ]
+        "NONE": [ title, release_date ]
         "Other informations": [ is_published, producer, actors ]
       actions:
         list: ~

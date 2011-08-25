@@ -32,6 +32,11 @@ class Movie
      * @ORM\JoinColumn(name="producer_id", referencedColumnName="id")
      */
     protected $producer;
+    
+    /**
+     * @ORM\Column(type="date", nullable="true")
+     */
+    protected $release_date;
 
     /**
      * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies")
@@ -136,5 +141,25 @@ class Movie
     public function getActors()
     {
         return $this->actors;
+    }
+
+    /**
+     * Set release_date
+     *
+     * @param date $releaseDate
+     */
+    public function setReleaseDate($releaseDate)
+    {
+        $this->release_date = $releaseDate;
+    }
+
+    /**
+     * Get release_date
+     *
+     * @return date 
+     */
+    public function getReleaseDate()
+    {
+        return $this->release_date;
     }
 }
