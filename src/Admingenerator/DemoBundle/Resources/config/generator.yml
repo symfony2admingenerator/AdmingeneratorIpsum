@@ -37,7 +37,11 @@ builders:
         delete: ~
   filters: 
     params:
+      fields:
+        release_date:
+          formType: date_range
       display: [ title, is_published, producer, actors, release_date]
+
   new: 
     params:
       title: You're creating a new movie
