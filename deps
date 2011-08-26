@@ -1,6 +1,6 @@
 [symfony]
     git=git://github.com/symfony/symfony.git
-    version=v2.0.0
+    version=v2.0.1
 
 [twig]
     git=git://github.com/fabpot/Twig.git
@@ -20,7 +20,7 @@
 
 [doctrine]
     git=git://github.com/doctrine/doctrine2.git
-    version=2.1.0
+    version=2.1.1
 
 [doctrine-fixtures]
     git=git://github.com/doctrine/data-fixtures.git
