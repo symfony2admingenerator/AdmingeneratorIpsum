@@ -3,7 +3,7 @@ params:
   model: Admingenerator\DemoBundle\Entity\Movie
   namespace_prefix: Admingenerator
   bundle_name: DemoBundle
-  fields: 
+  fields:
     is_published:
       help: If you want to see this content on you website
     actors:
@@ -15,10 +15,11 @@ params:
       addFormOptions:
         property: name
     release_date:
-      formType: birthday 
+      formType: birthday
       addFormOptions:
-        years: 
-          .range: 
+        format: "Y-m-d"
+        years:
+          .range:
             from: <?php echo date("Y"); ?>
 
             to: 1950
@@ -31,29 +32,29 @@ builders:
       display: [ id, title, is_published, producer, release_date ]
       max_per_page: 3
       actions:
-        new: ~ 
+        new: ~
       object_actions:
-        edit: ~ 
+        edit: ~
         delete: ~
-  filters: 
+  filters:
     params:
       fields:
         release_date:
           formType: date_range
       display: [ title, is_published, producer, actors, release_date]
 
-  new: 
+  new:
     params:
       title: You're creating a new movie
       display: [ title, is_published, producer, actors, release_date ]
       actions:
         list: ~
-  edit: 
+  edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
-      display: 
+      display:
         "NONE": [ title, release_date ]
         "Other informations": [ is_published, producer, actors ]
       actions:
         list: ~
-  delete: ~ 
+  delete: ~
