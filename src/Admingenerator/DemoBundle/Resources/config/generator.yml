@@ -35,7 +35,8 @@ builders:
         new: ~
       object_actions:
         edit: ~
-        delete: ~
+        delete: 
+          confirm: Are you sure to delete {{ Movie.title }} ?
   filters:
     params:
       fields:
