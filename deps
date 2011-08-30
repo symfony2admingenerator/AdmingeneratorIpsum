@@ -12,11 +12,11 @@
 
 [doctrine-common]
     git=git://github.com/doctrine/common.git
-    version=2.1.0
+    version=2.1.2
 
 [doctrine-dbal]
     git=git://github.com/doctrine/dbal.git
-    version=2.1.0
+    version=2.1.2
 
 [doctrine]
     git=git://github.com/doctrine/doctrine2.git
