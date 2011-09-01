@@ -4,7 +4,7 @@ namespace Admingenerator\DoctrineODMDemoBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @MongoDB\Document(collection="actors")
+ * @MongoDB\Document(collection="actors", repositoryClass="Admingenerator\DoctrineODMDemoBundle\Document\ActorRepository")
  */
 class Actor
 {

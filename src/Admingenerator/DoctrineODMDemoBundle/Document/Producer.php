@@ -5,7 +5,7 @@ namespace Admingenerator\DoctrineODMDemoBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @MongoDB\Document(collection="producers")
+ * @MongoDB\Document(collection="producers", repositoryClass="Admingenerator\DoctrineODMDemoBundle\Document\ProducerRepository")
  */
 class Producer
 {
