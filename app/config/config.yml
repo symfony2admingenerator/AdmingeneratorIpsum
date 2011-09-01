@@ -50,6 +50,22 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+# Doctrine MongoDB Configuration
+doctrine_mongodb:
+    default_database: admingen_db
+    auto_generate_proxy_classes: %kernel.debug%
+    auto_generate_hydrator_classes: %kernel.debug%
+    connections:
+        default:
+            server:  mongodb://localhost:27017
+            options:
+                connect: true
+    document_managers:
+        default:
+            metadata_cache_driver: apc
+            mappings: ~
+            auto_mapping: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%

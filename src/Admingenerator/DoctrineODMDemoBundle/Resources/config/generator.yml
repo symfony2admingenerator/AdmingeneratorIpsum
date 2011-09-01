@@ -1,6 +1,6 @@
 generator: admingenerator.generator.doctrine_odm
 params:
-  model: Admingenerator\DoctrineODMDemoBundle\Entity\Movie
+  model: Admingenerator\DoctrineODMDemoBundle\Document\Movie
   namespace_prefix: Admingenerator
   bundle_name: DoctrineODMDemoBundle
   fields:
@@ -25,6 +25,7 @@ params:
             to: 1950
             step: 1
 
+
 builders:
   list:
     params:
@@ -42,12 +43,12 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, producer, actors, release_date]
+      display: [ title, is_published, actors, producer, release_date]
 
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, producer, actors, release_date ]
+      display: [ title, is_published, actors, producer, release_date ]
       actions:
         list: ~
   edit:
@@ -55,7 +56,7 @@ builders:
       title: You're editing the movie "{{ Movie.title }}"
       display:
         "NONE": [ title, release_date ]
-        "Other informations": [[ is_published ], [producer, actors ]]
+        "Other informations": [[ is_published ], [ producer, actors ]]
       actions:
         list: ~
   delete: ~

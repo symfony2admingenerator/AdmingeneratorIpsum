@@ -7,7 +7,7 @@ _admindemo:
     type:     admingenerator
     prefix:   /admin-demo
 
-_admindemo_odm:
+_admindemoodm:
     resource: "@AdmingeneratorDoctrineODMDemoBundle/Controller/"
     type:     admingenerator
     prefix:   /admin-demo-odm
