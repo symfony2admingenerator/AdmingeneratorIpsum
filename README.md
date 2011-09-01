@@ -30,7 +30,7 @@ And probably to configure assetic :
             compass: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
 ```
 
-# With DoctrineORM
+# With DoctrineODM
 
 You've to install pecl/mongo
 
