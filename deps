@@ -22,6 +22,16 @@
     git=git://github.com/doctrine/doctrine2.git
     version=2.1.1
 
+[DoctrineMongoDBBundle]
+    git=git://github.com/symfony/DoctrineMongoDBBundle.git
+    target=/bundles/Symfony/Bundle/DoctrineMongoDBBundle
+
+[doctrine-mongodb-odm]
+    git=git://github.com/doctrine/mongodb-odm.git
+
+[doctrine-mongodb]
+    git=git://github.com/doctrine/mongodb.git
+    
 [doctrine-fixtures]
     git=git://github.com/doctrine/data-fixtures.git
 
