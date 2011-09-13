@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             //Propel
             new Propel\PropelBundle\PropelBundle(),
             new Admingenerator\PropelDemoBundle\AdmingeneratorPropelDemoBundle(),
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
