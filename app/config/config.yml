@@ -66,6 +66,18 @@ doctrine_mongodb:
             mappings: ~
             auto_mapping: true
 
+# Propel
+propel:
+    path:       "%kernel.root_dir%/../vendor/propel"
+    phing_path: "%kernel.root_dir%/../vendor/phing"
+    dbal:
+        driver:               mysql
+        user:                 %database_user%
+        password:             %database_password%
+        dsn:                  mysql:host=%database_host%;dbname=%database_name%;charset=UTF8
+        options:              {}
+        attributes:           {}
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%

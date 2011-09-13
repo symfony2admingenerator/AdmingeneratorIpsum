@@ -16,3 +16,8 @@ _admindemoodm:
     resource: "@AdmingeneratorDoctrineODMDemoBundle/Controller/"
     type:     admingenerator
     prefix:   /admin-demo-odm
+
+_admindemopropel:
+    resource: "@AdmingeneratorPropelDemoBundle/Controller/"
+    type:     admingenerator
+    prefix:   /admin-demo-propel

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="Admingenerator\PropelDemoBundle\Model" defaultIdMethod="native">
+    
+    <table name="propel_actors" phpName="Actor">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="name" type="varchar" required="true" primaryString="true" size="255" />
+        <foreign-key foreignTable="propel_actors_movies" onDelete="cascade" onUpdate="cascade">
+            <reference local="id" foreign="actor_id" />
+        </foreign-key>
+        <index>
+            <index-column name="name" />
+        </index>
+    </table>
+    
+    <table name="propel_movies" phpName="Movie">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="title" type="varchar" required="true" primaryString="true" size="255" />
+        <column name="is_published" type="boolean" />
+        <column name="producer_id" type="integer" required="true"  />
+        <foreign-key foreignTable="propel_producers" onDelete="cascade" onUpdate="cascade">
+            <reference local="producer_id" foreign="id" />
+        </foreign-key>
+        
+        <foreign-key foreignTable="propel_actors_movies" onDelete="cascade" onUpdate="cascade">
+            <reference local="id" foreign="movie_id" />
+        </foreign-key>
+        
+        <index>
+            <index-column name="title" />
+        </index>
+    </table>
+    
+    <table name="propel_producers" phpName="Producer">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="name" type="varchar" required="true" primaryString="true" size="255" />
+        <column name="is_published" type="boolean" />
+        <index>
+            <index-column name="name" />
+        </index>
+    </table>
+    
+    <table name="propel_actors_movies" phpName="ActorHasMovie">
+        <column name="actor_id" type="integer" required="true" primaryKey="true"  />
+        <column name="movie_id" type="integer" required="true" primaryKey="true"  />
+        
+        <foreign-key foreignTable="propel_actors">
+            <reference local="actor_id" foreign="id" />
+        </foreign-key>
+        
+        <foreign-key foreignTable="propel_movies">
+            <reference local="movie_id" foreign="id" />
+        </foreign-key>
+    </table>
+    
+</database>

@@ -112,3 +112,15 @@
 [KnpMenu]
     git=git://github.com/knplabs/KnpMenu.git
     target=/KnpMenu
+
+[PropelBundle]
+    git=git://github.com/propelorm/PropelBundle.git
+    target=/bundles/Propel/PropelBundle
+
+[phing]
+    git=git://github.com/Xosofox/phing.git
+    target=/phing
+
+[propel]
+    git=git://github.com/propelorm/Propel.git
+    target=/propel

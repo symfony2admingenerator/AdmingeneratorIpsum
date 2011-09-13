@@ -8,6 +8,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+            //Core
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -18,13 +19,27 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
-            new Admingenerator\DemoBundle\AdmingeneratorDemoBundle(),
-            new Admingenerator\DoctrineODMDemoBundle\AdmingeneratorDoctrineODMDemoBundle(),
-            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            
+            //Menu
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            
+            //Pager 
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            
+            //Generator
+            new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
+            
+            //Doctrine
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+            new Admingenerator\DemoBundle\AdmingeneratorDemoBundle(),
+            
+            //Doctrine MONGO
+            new Admingenerator\DoctrineODMDemoBundle\AdmingeneratorDoctrineODMDemoBundle(),
             new Admingenerator\DoctrineODMDemoActorBundle\AdmingeneratorDoctrineODMDemoActorBundle(),
+            
+            //Propel
+            new Propel\PropelBundle\PropelBundle(),
+            new Admingenerator\PropelDemoBundle\AdmingeneratorPropelDemoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
