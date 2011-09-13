@@ -1,26 +1,25 @@
 [symfony]
     git=git://github.com/symfony/symfony.git
-    version=v2.0.1
 
 [twig]
     git=git://github.com/fabpot/Twig.git
-    version=v1.1.1
+    version=v1.2.0
 
 [monolog]
     git=git://github.com/Seldaek/monolog.git
-    version=1.0.0
+    version=1.0.1
 
 [doctrine-common]
     git=git://github.com/doctrine/common.git
-    version=2.1.2
+    version=origin/2.1.x
 
 [doctrine-dbal]
     git=git://github.com/doctrine/dbal.git
-    version=2.1.2
+    version=origin/2.1.x
 
 [doctrine]
     git=git://github.com/doctrine/doctrine2.git
-    version=2.1.1
+    version=origin/2.1.x
 
 [DoctrineMongoDBBundle]
     git=git://github.com/symfony/DoctrineMongoDBBundle.git
@@ -41,18 +40,18 @@
 
 [swiftmailer]
     git=git://github.com/swiftmailer/swiftmailer.git
-    version=v4.1.0
+    version=v4.1.2
 
 [assetic]
     git=git://github.com/kriswallsmith/assetic.git
-    version=v1.0.1
+    version=v1.0.2
 
 [twig-extensions]
     git=git://github.com/fabpot/Twig-extensions.git
 
 [metadata]
     git=git://github.com/schmittjoh/metadata.git
-    version=1.0.0
+    version=origin/1.0.x
 
 [SensioFrameworkExtraBundle]
     git=git://github.com/sensio/SensioFrameworkExtraBundle.git
@@ -73,7 +72,6 @@
 [AsseticBundle]
     git=git://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
-    version=v1.0.0RC2
 
 [Admingenerator]
     git=git://github.com/cedriclombardot/AdmingeneratorGeneratorBundle.git
