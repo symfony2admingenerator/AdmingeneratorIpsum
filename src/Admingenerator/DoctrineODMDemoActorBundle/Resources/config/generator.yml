@@ -3,13 +3,13 @@ params:
   model: Admingenerator\DoctrineODMDemoBundle\Document\Actor
   namespace_prefix: Admingenerator
   bundle_name: DoctrineODMDemoActorBundle
-  fields: ~ 
+  fields: ~
 
 builders:
   list:
     params:
       title: List for DoctrineODMDemoActorBundle
-      display: [ Actor ]
+      display: [ name ]
       max_per_page: 3
       actions:
         new: ~
@@ -18,17 +18,17 @@ builders:
         delete: ~
   filters:
     params:
-      display: [ Actor ]
+      display: [ name ]
   new:
     params:
       title: New object for DoctrineODMDemoActorBundle
-      display: [ Actor ]
+      display: [ name ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ Actor.name }}"
-      display: [ Actor ]
+      display: [ name ]
       actions:
         list: ~
   delete: ~
