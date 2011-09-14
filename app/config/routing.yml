@@ -1,7 +1,7 @@
 AdmingeneratorDoctrineODMDemoActorBundle_admin_admingenerator_doctrine_odm_demo_actor_bundle:
     resource: "@AdmingeneratorDoctrineODMDemoActorBundle/Controller/"
     type:     admingenerator
-    prefix:   /admin/admingenerator_doctrine_odm_demo_actor_bundle
+    prefix:   /admin-demo-odm-actor
 
 # Internal routing configuration to handle ESI
 #_internal:
