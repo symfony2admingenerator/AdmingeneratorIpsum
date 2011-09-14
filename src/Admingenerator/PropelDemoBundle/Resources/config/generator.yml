@@ -1,6 +1,6 @@
-generator: admingenerator.generator.doctrine
+generator: admingenerator.generator.propel
 params:
-  model: Admingenerator\DemoBundle\Model\Movie
+  model: Admingenerator\PropelDemoBundle\Model\Movie
   namespace_prefix: Admingenerator
   bundle_name: PropelDemoBundle
   fields:
@@ -29,7 +29,7 @@ builders:
   list:
     params:
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, producer, release_date ]
+      display: [ id, title, is_published, release_date ]
       max_per_page: 3
       actions:
         new: ~
@@ -42,12 +42,12 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, producer, actors, release_date]
+      display: [ title, is_published, release_date]
 
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, producer, actors, release_date ]
+      display: [ title, is_published, release_date ]
       actions:
         list: ~
   edit:
@@ -55,7 +55,7 @@ builders:
       title: You're editing the movie "{{ Movie.title }}"
       display:
         "NONE": [ title, release_date ]
-        "Other informations": [[ is_published ], [producer, actors ]]
+        "Other informations": [[ is_published ]]#, [producer, actors ]]
       actions:
         list: ~
   delete: ~

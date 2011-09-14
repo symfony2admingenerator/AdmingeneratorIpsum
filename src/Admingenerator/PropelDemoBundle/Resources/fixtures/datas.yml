@@ -1,0 +1,129 @@
+\Admingenerator\PropelDemoBundle\Model\Actor:
+    'Alexandre Rodrigues':
+         Name: 'Alexandre Rodrigues'
+    'Matheus Nachtergaele':
+         Name: 'Matheus Nachtergaele'
+    'Leandro Firmino':
+         Name: 'Leandro Firmino'
+    'Phellipe Haagensen':
+         Name: 'Phellipe Haagensen'
+    'Douglas Silva':
+         Name: 'Douglas Silva'
+    'Keir Dullea':
+         Name: 'Keir Dullea'
+    'Gary Lockwood':
+         Name: 'Gary Lockwood'
+    'William Sylvester':
+         Name: 'William Sylvester'
+    'Daniel Richter':
+         Name: 'Daniel Richter'
+    'Leonard Rossiter':
+         Name: 'Leonard Rossiter'
+    'Douglas Rain':
+         Name: 'Douglas Rain'
+    'Sigourney Weaver':
+         Name: 'Sigourney Weaver'
+    'Humphrey Bogart':
+         Name: 'Humphrey Bogart'
+    'José Ferrer':
+         Name: 'José Ferrer'
+
+\Admingenerator\PropelDemoBundle\Model\Producer:
+    'Katia Lund':
+        Name: 'Katia Lund'
+    'Christine Jeffs':
+        Name: 'Christine Jeffs'
+    'Stanley Kubrick':
+        Name: 'Stanley Kubrick'
+    'Sidney Lumet':
+        Name: 'Sidney Lumet'
+    'Ridley Scott':
+        Name: 'Ridley Scott'
+    'Edward':
+        Name: 'Edward'
+
+\Admingenerator\PropelDemoBundle\Model\Movie:
+    'City of God':
+        Title: City of God
+        ReleaseDate: 2003-03-12
+        IsPublished: true
+        ProducerId: 'Katia Lund'
+    'Rain':
+        Title: Rain
+        ReleaseDate: 2004-07-21
+        IsPublished: true
+        ProducerId: 'Christine Jeffs'
+    '2001: A Space Odyssey':
+        Title: '2001: A Space Odyssey'
+        ReleaseDate: 1968-09-27
+        IsPublished: true
+        ProducerId: 'Katia Lund'
+    'This is a "fake" movie title':
+        Title: This is a "fake" movie title
+        ReleaseDate: 1957-09-27
+        IsPublished: true
+        ProducerId: 'Sidney Lumet'
+    'Alien':
+        Title: Alien
+        ReleaseDate: 1979-09-12
+        IsPublished: true
+        ProducerId: 'Ridley Scott'
+    'The Sequel to "Dances With Wolves."':
+        Title: The Sequel to "Dances With Wolves."
+        ReleaseDate: 1979-09-12
+        IsPublished: true
+        ProducerId: 'Ridley Scott'
+    'Caine Mutiny':
+        Title: Caine Mutiny
+        ReleaseDate: 1954-09-15
+        IsPublished: true
+        ProducerId: 'Edward'
+
+
+\Admingenerator\PropelDemoBundle\Model\ActorHasMovie:
+     city_Alexandre:
+         ActorId: 'Alexandre Rodrigues'
+         MovieId: 'City of God'
+     city_Matheus:
+         ActorId: 'Matheus Nachtergaele'
+         MovieId: 'City of God'
+     city_Leandro:
+         ActorId: 'Leandro Firmino'
+         MovieId: 'City of God'
+     city_Phellipe:
+         ActorId: 'Phellipe Haagensen'
+         MovieId: 'City of God'
+     city_Douglas:
+         ActorId: 'Douglas Silva'
+         MovieId: 'City of God'
+     space_Keir:
+         ActorId: 'Keir Dullea'
+         MovieId: '2001: A Space Odyssey'
+     space_William:
+         ActorId: 'William Sylvester'
+         MovieId: '2001: A Space Odyssey'
+     space_Daniel:
+         ActorId: 'Daniel Richter'
+         MovieId: '2001: A Space Odyssey'
+     space_Leonard:
+         ActorId: 'Leonard Rossiter'
+         MovieId: '2001: A Space Odyssey'
+     space_Douglas:
+         ActorId: 'Douglas Rain'
+         MovieId: '2001: A Space Odyssey'
+     fake_Alexandre:
+         ActorId: 'Alexandre Rodrigues'
+         MovieId: 'This is a "fake" movie title'
+     fake_Gary:
+         ActorId: 'Gary Lockwood'
+         MovieId: 'This is a "fake" movie title'
+     alien_Sigourney:
+         ActorId: 'Sigourney Weaver'
+         MovieId: 'Alien'
+     caine_Humphrey:
+         ActorId: 'Humphrey Bogart'
+         MovieId: 'Caine Mutiny'
+     caine_Jose:
+         ActorId: 'José Ferrer'
+         MovieId: 'Caine Mutiny'
+

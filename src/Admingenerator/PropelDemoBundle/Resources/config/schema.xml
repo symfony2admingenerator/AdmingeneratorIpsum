@@ -16,6 +16,7 @@
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="title" type="varchar" required="true" primaryString="true" size="255" />
         <column name="is_published" type="boolean" />
+        <column name="release_date" type="date" />
         <column name="producer_id" type="integer" required="true"  />
         <foreign-key foreignTable="propel_producers" onDelete="cascade" onUpdate="cascade">
             <reference local="producer_id" foreign="id" />
