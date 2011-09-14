@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Admingenerator\DoctrineODMDemoActorBundle\AdmingeneratorDoctrineODMDemoActorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

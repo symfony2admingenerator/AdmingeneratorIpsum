@@ -1,0 +1,34 @@
+generator: admingenerator.generator.doctrine_odm
+params:
+  model: Admingenerator\DoctrineODMDemoBundle\Document\Actor
+  namespace_prefix: Admingenerator
+  bundle_name: DoctrineODMDemoActorBundle
+  fields: ~ 
+
+builders:
+  list:
+    params:
+      title: List for DoctrineODMDemoActorBundle
+      display: [ Actor ]
+      max_per_page: 3
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: [ Actor ]
+  new:
+    params:
+      title: New object for DoctrineODMDemoActorBundle
+      display: [ Actor ]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object "{{ Actor.name }}"
+      display: [ Actor ]
+      actions:
+        list: ~
+  delete: ~
