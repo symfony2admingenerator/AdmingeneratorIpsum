@@ -27,7 +27,7 @@ assetic:
     use_controller: false
     filters:
         cssrewrite: ~
-        sass: 
+        sass:
             bin: /var/lib/gems/1.8/gems/sass-3.1.7/bin/sass
             compass: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
         # closure:
@@ -73,9 +73,9 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
 
-jms_security_extra:
-    secure_controllers:  true
-    secure_all_services: false
+#jms_security_extra:
+#    secure_controllers:  true
+#    secure_all_services: false
 
 knp_menu:
     twig: true
