@@ -10,10 +10,10 @@ params:
       filterOn: actors.id
     producer:
       label: Producer name
-      sort_on: producer.name
-      getter: producer.name
+      sort_on: Producer.Name
+      getter: Producer
       addFormOptions:
-        property: name
+        property: Name
     release_date:
       formType: birthday
       addFormOptions:
@@ -29,7 +29,7 @@ builders:
   list:
     params:
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, release_date ]
+      display: [ id, title, is_published, release_date, producer ]
       max_per_page: 3
       actions:
         new: ~
