@@ -42,7 +42,7 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, release_date]
+      display: [ title, is_published, release_date, Producer]
 
   new:
     params:
