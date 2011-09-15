@@ -42,12 +42,12 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, release_date, Producer]
+      display: [ title, is_published, release_date, producer]
 
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, release_date ]
+      display: [ title, is_published, release_date, producer ]
       actions:
         list: ~
   edit:
