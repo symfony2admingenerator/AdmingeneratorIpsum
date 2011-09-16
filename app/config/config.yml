@@ -57,7 +57,7 @@ doctrine_mongodb:
     auto_generate_hydrator_classes: %kernel.debug%
     connections:
         default:
-            server:  mongodb://l ocalhost:27017
+            server:  mongodb://localhost:27017
             options:
                 connect: true
     document_managers:
