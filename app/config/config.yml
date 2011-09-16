@@ -57,7 +57,7 @@ doctrine_mongodb:
     auto_generate_hydrator_classes: %kernel.debug%
     connections:
         default:
-            server:  mongodb://localhost:27017
+            server:  mongodb://l ocalhost:27017
             options:
                 connect: true
     document_managers:
@@ -91,3 +91,5 @@ swiftmailer:
 
 knp_menu:
     twig: true
+admingenerator_generator:
+    knp_menu_class: Admingenerator\DemoBundle\Menu\AdminMenu
