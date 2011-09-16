@@ -557,6 +557,23 @@ abstract class BaseMovieQuery extends ModelCriteria
     }
 
     /**
+     * Filter the query by a related Actor object
+     * using the propel_actors_movies table as cross reference
+     *
+     * @param     Actor $actor the related object to use as filter
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return    MovieQuery The current query, for fluid interface
+     */
+    public function filterByActorRelatedByActorId($actor, $comparison = Criteria::EQUAL)
+    {
+        return $this
+            ->useActorHasMovieRelatedByMovieIdQuery()
+            ->filterByActorRelatedByActorId($actor, $comparison)
+            ->endUse();
+    }
+
+    /**
      * Exclude object from result
      *
      * @param     Movie $movie Object to remove from the list of results

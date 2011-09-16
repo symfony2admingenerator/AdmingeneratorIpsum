@@ -55,6 +55,7 @@ class ActorTableMap extends TableMap
 	{
 		$this->addRelation('ActorHasMovieRelatedById', 'Admingenerator\\PropelDemoBundle\\Model\\ActorHasMovie', RelationMap::MANY_TO_ONE, array('id' => 'actor_id', ), 'CASCADE', 'CASCADE');
 		$this->addRelation('ActorHasMovieRelatedByActorId', 'Admingenerator\\PropelDemoBundle\\Model\\ActorHasMovie', RelationMap::ONE_TO_MANY, array('id' => 'actor_id', ), null, null, 'ActorHasMoviesRelatedByActorId');
+		$this->addRelation('MovieRelatedByMovieId', 'Admingenerator\\PropelDemoBundle\\Model\\Movie', RelationMap::MANY_TO_MANY, array(), null, null, 'MoviesRelatedByMovieId');
 	} // buildRelations()
 
 } // ActorTableMap

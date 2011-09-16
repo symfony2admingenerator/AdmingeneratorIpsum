@@ -40,7 +40,7 @@
         </index>
     </table>
     
-    <table name="propel_actors_movies" phpName="ActorHasMovie">
+    <table name="propel_actors_movies" phpName="ActorHasMovie" isCrossRef="true">
         <column name="actor_id" type="integer" required="true" primaryKey="true"  />
         <column name="movie_id" type="integer" required="true" primaryKey="true"  />
         

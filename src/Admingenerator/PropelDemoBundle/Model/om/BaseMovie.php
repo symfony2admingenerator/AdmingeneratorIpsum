@@ -14,8 +14,10 @@ use \PropelDateTime;
 use \PropelException;
 use \PropelObjectCollection;
 use \PropelPDO;
+use Admingenerator\PropelDemoBundle\Model\Actor;
 use Admingenerator\PropelDemoBundle\Model\ActorHasMovie;
 use Admingenerator\PropelDemoBundle\Model\ActorHasMovieQuery;
+use Admingenerator\PropelDemoBundle\Model\ActorQuery;
 use Admingenerator\PropelDemoBundle\Model\MoviePeer;
 use Admingenerator\PropelDemoBundle\Model\MovieQuery;
 use Admingenerator\PropelDemoBundle\Model\Producer;
@@ -88,6 +90,11 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @var        array ActorHasMovie[] Collection to store aggregation of ActorHasMovie objects.
 	 */
 	protected $collActorHasMoviesRelatedByMovieId;
+
+	/**
+	 * @var        array Actor[] Collection to store aggregation of Actor objects.
+	 */
+	protected $collActorsRelatedByActorId;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -416,6 +423,7 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 			$this->aActorHasMovieRelatedById = null;
 			$this->collActorHasMoviesRelatedByMovieId = null;
 
+			$this->collActorsRelatedByActorId = null;
 		} // if (deep)
 	}
 
@@ -1233,6 +1241,119 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	}
 
 	/**
+	 * Clears out the collActorsRelatedByActorId collection
+	 *
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addActorsRelatedByActorId()
+	 */
+	public function clearActorsRelatedByActorId()
+	{
+		$this->collActorsRelatedByActorId = null; // important to set this to NULL since that means it is uninitialized
+	}
+
+	/**
+	 * Initializes the collActorsRelatedByActorId collection.
+	 *
+	 * By default this just sets the collActorsRelatedByActorId collection to an empty collection (like clearActorsRelatedByActorId());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initActorsRelatedByActorId()
+	{
+		$this->collActorsRelatedByActorId = new PropelObjectCollection();
+		$this->collActorsRelatedByActorId->setModel('Actor');
+	}
+
+	/**
+	 * Gets a collection of Actor objects related by a many-to-many relationship
+	 * to the current object by way of the propel_actors_movies cross-reference table.
+	 *
+	 * If the $criteria is not null, it is used to always fetch the results from the database.
+	 * Otherwise the results are fetched from the database the first time, then cached.
+	 * Next time the same method is called without $criteria, the cached collection is returned.
+	 * If this Movie is new, it will return
+	 * an empty collection or the current collection; the criteria is ignored on a new object.
+	 *
+	 * @param      Criteria $criteria Optional query object to filter the query
+	 * @param      PropelPDO $con Optional connection object
+	 *
+	 * @return     PropelCollection|array Actor[] List of Actor objects
+	 */
+	public function getActorsRelatedByActorId($criteria = null, PropelPDO $con = null)
+	{
+		if(null === $this->collActorsRelatedByActorId || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActorsRelatedByActorId) {
+				// return empty collection
+				$this->initActorsRelatedByActorId();
+			} else {
+				$collActorsRelatedByActorId = ActorQuery::create(null, $criteria)
+					->filterByMovieRelatedByMovieId($this)
+					->find($con);
+				if (null !== $criteria) {
+					return $collActorsRelatedByActorId;
+				}
+				$this->collActorsRelatedByActorId = $collActorsRelatedByActorId;
+			}
+		}
+		return $this->collActorsRelatedByActorId;
+	}
+
+	/**
+	 * Gets the number of Actor objects related by a many-to-many relationship
+	 * to the current object by way of the propel_actors_movies cross-reference table.
+	 *
+	 * @param      Criteria $criteria Optional query object to filter the query
+	 * @param      boolean $distinct Set to true to force count distinct
+	 * @param      PropelPDO $con Optional connection object
+	 *
+	 * @return     int the number of related Actor objects
+	 */
+	public function countActorsRelatedByActorId($criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if(null === $this->collActorsRelatedByActorId || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActorsRelatedByActorId) {
+				return 0;
+			} else {
+				$query = ActorQuery::create(null, $criteria);
+				if($distinct) {
+					$query->distinct();
+				}
+				return $query
+					->filterByMovieRelatedByMovieId($this)
+					->count($con);
+			}
+		} else {
+			return count($this->collActorsRelatedByActorId);
+		}
+	}
+
+	/**
+	 * Associate a Actor object to this object
+	 * through the propel_actors_movies cross reference table.
+	 *
+	 * @param      Actor $actor The ActorHasMovie object to relate
+	 * @return     void
+	 */
+	public function addActorRelatedByActorId($actor)
+	{
+		if ($this->collActorsRelatedByActorId === null) {
+			$this->initActorsRelatedByActorId();
+		}
+		if (!$this->collActorsRelatedByActorId->contains($actor)) { // only add it if the **same** object is not already associated
+			$actorHasMovie = new ActorHasMovie();
+			$actorHasMovie->setActorRelatedByActorId($actor);
+			$this->addActorHasMovieRelatedByMovieId($actorHasMovie);
+
+			$this->collActorsRelatedByActorId[]= $actor;
+		}
+	}
+
+	/**
 	 * Clears the current object and sets all attributes to their default values
 	 */
 	public function clear()
@@ -1267,12 +1388,21 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 					$o->clearAllReferences($deep);
 				}
 			}
+			if ($this->collActorsRelatedByActorId) {
+				foreach ($this->collActorsRelatedByActorId as $o) {
+					$o->clearAllReferences($deep);
+				}
+			}
 		} // if ($deep)
 
 		if ($this->collActorHasMoviesRelatedByMovieId instanceof PropelCollection) {
 			$this->collActorHasMoviesRelatedByMovieId->clearIterator();
 		}
 		$this->collActorHasMoviesRelatedByMovieId = null;
+		if ($this->collActorsRelatedByActorId instanceof PropelCollection) {
+			$this->collActorsRelatedByActorId->clearIterator();
+		}
+		$this->collActorsRelatedByActorId = null;
 		$this->aProducer = null;
 		$this->aActorHasMovieRelatedById = null;
 	}

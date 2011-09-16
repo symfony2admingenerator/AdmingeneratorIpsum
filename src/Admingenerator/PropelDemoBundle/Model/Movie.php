@@ -18,4 +18,14 @@ use Admingenerator\PropelDemoBundle\Model\om\BaseMovie;
  */
 class Movie extends BaseMovie {
 
+    public function getActorRelatedByActorId() {
+        return $this->getActorsRelatedByActorId();
+    }
+    
+    public function setActorRelatedByActorId($actors) {
+        foreach ($actors as $actor) {
+            $this->addActorRelatedByActorId($actor);
+        }
+    }
+    
 } // Movie
