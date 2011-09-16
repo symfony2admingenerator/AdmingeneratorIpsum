@@ -32,18 +32,18 @@ class AdminMenu
         //Propel demos
         $propel = $menu->addChild('Propel', array('uri' => '#'));
         $propel->setLinkAttributes(array('class'=>'sub main'));
-        $propel->addChild('Movies', array('route' => 'PropelDemoBundle_list'));
+        $propel->addChild('Movies', array('route' => 'Admingenerator_PropelDemoBundle_list'));
         
         //Doctrine ORM demos
         $doctrine = $menu->addChild('Doctrine ORM', array('uri' => '#'));
         $doctrine->setLinkAttributes(array('class'=>'sub main'));
-        $doctrine->addChild('Movies', array('route' => 'DemoBundle_list'));
+        $doctrine->addChild('Movies', array('route' => 'Admingenerator_DemoBundle_list'));
         
         //Doctrine ODM demos
         $doctrine = $menu->addChild('Doctrine ODM', array('uri' => '#'));
         $doctrine->setLinkAttributes(array('class'=>'sub main'));
-        $doctrine->addChild('Movies', array('route' => 'DoctrineODMDemoBundle_list'));
-        $doctrine->addChild('Actors', array('route' => 'DoctrineODMDemoActorBundle_list'));
+        $doctrine->addChild('Movies', array('route' => 'Admingenerator_DoctrineODMDemoBundle_list'));
+        $doctrine->addChild('Actors', array('route' => 'Admingenerator_DoctrineODMDemoActorBundle_list'));
         
         //Help
         $help = $menu->addChild('Overwrite this menu', array('uri' => '#'));
