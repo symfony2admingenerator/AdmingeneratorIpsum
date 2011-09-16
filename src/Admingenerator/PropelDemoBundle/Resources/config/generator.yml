@@ -6,6 +6,7 @@ params:
   fields:
     ActorRelatedByActorId:
       label: Actors
+      filterOn: ActorHasMovieRelatedById.ActorId
     is_published:
       help: If you want to see this content on you website
     producer:
