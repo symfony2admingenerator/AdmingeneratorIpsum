@@ -93,3 +93,6 @@ knp_menu:
     twig: true
 admingenerator_generator:
     knp_menu_class: Admingenerator\DemoBundle\Menu\AdminMenu
+    use_doctrine_orm: true
+    use_doctrine_odm: true
+    use_propel: true
