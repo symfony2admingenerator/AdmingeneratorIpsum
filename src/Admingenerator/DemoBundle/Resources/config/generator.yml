@@ -31,6 +31,7 @@ builders:
       title: Here is a beautifull title no  ???
       display: [ id, title, is_published, producer, release_date ]
       max_per_page: 3
+      sort: [ producer.name, DESC ]
       actions:
         new: ~
       object_actions:
