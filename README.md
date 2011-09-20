@@ -13,6 +13,8 @@ Run in your schell the nexts commands lines
 ```
 # Optionnal dependencies
 
+##  Assetic
+
 You could install sass and compass if you want to change css :
 
 ```shell
@@ -28,6 +30,15 @@ And probably to configure assetic :
         sass:
             bin: /var/lib/gems/1.8/gems/sass-3.1.7/bin/sass
             compass: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
+```
+
+##  Without assetic
+
+Configure your config.yml to use the assetic less template
+
+``` yaml
+admingenerator_generator:
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
 ```
 
 # With DoctrineODM
