@@ -28,6 +28,21 @@ params:
 builders:
   list:
     params:
+      scopes:
+        group_1: 
+          All: ~
+          Published: 
+            default: true
+            filters: 
+              is_published: true
+          "Not Published": 
+            filters: 
+              is_published: false
+        group_2:
+          "With actors":
+             filters: [ withActors ]
+          "Without actos":
+             filters: [ withoutActors ]
       title: Here is a beautifull title no  ???
       display: [ id, title, is_published, producer, release_date ]
       max_per_page: 3

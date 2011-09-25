@@ -2,6 +2,8 @@
 
 namespace Admingenerator\PropelDemoBundle\Model;
 
+use Doctrine\ORM\Query\Expr\GroupBy;
+
 use Admingenerator\PropelDemoBundle\Model\om\BaseMovieQuery;
 
 
@@ -18,4 +20,18 @@ use Admingenerator\PropelDemoBundle\Model\om\BaseMovieQuery;
  */
 class MovieQuery extends BaseMovieQuery {
 
+    public function withoutActors()
+    {
+        //@todo
+        
+        return $this;
+    }
+    
+    public function withActors()
+    {
+        $this->innerJoinActorHasMovieRelatedByMovieId()
+             ->groupById();
+        
+        return $this;
+    }
 } // MovieQuery

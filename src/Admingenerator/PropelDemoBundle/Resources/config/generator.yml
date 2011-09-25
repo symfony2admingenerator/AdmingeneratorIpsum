@@ -29,6 +29,22 @@ params:
 builders:
   list:
     params:
+      scopes:
+        group_1: 
+          All: ~
+          Published: 
+            default: true
+            filters: 
+              filterByIsPublished: true
+          "Not Published": 
+            filters: 
+              filterByIsPublished: false
+        group_2:
+          "With actors":
+             filters: [ withActors ]
+          "Without actos":
+             filters: [ withoutActors ]
+         
       title: Here is a beautifull title no  ???
       display: [ id, title, is_published, release_date, producer ]
       max_per_page: 3
@@ -44,7 +60,6 @@ builders:
         release_date:
           formType: date_range
       display: [ title, is_published, release_date, producer, ActorRelatedByActorId ]
-
   new:
     params:
       title: You're creating a new movie
