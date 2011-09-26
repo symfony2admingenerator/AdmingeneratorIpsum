@@ -14,6 +14,8 @@ params:
       getter: producer.name
       addFormOptions:
         property: name
+    nbactors:
+      getter: actors.count
     release_date:
       formType: birthday
       addFormOptions:
@@ -44,7 +46,7 @@ builders:
           "Without actos":
              filters: [ withoutActors ]
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, producer, release_date ]
+      display: [ id, title, is_published, producer, release_date, nbactors ]
       max_per_page: 3
       sort: [ producer.name, DESC ]
       actions:
