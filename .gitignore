@@ -2,3 +2,4 @@ app/cache/*
 vendor/*
 web/bundles*
 app/logs/*
+app/config/parameters.ini
