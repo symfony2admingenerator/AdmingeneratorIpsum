@@ -45,7 +45,7 @@ builders:
           "Without actos":
              filters: [ withoutActors ]
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, producer, release_date ]
+      display: [ id, title, is_published, producer, release_date, actors.count ]
       max_per_page: 3
       actions:
         new: ~
