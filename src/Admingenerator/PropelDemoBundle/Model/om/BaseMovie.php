@@ -10,6 +10,7 @@ use \DateTimeZone;
 use \PDO;
 use \Persistent;
 use \Propel;
+use \PropelCollection;
 use \PropelDateTime;
 use \PropelException;
 use \PropelObjectCollection;
@@ -109,6 +110,12 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @var        boolean
 	 */
 	protected $alreadyInValidation = false;
+
+	/**
+	 * An array of objects scheduled for deletion.
+	 * @var		array
+	 */
+	protected $actorsRelatedByActorIdScheduledForDeletion = null;
 
 	/**
 	 * Get the [id] column value.
@@ -574,6 +581,21 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
+			}
+
+			if ($this->actorsRelatedByActorIdScheduledForDeletion !== null) {
+				if (!$this->actorsRelatedByActorIdScheduledForDeletion->isEmpty()) {
+					ActorHasMovieRelatedByMovieIdQuery::create()
+						->filterByPrimaryKeys($this->actorsRelatedByActorIdScheduledForDeletion->getPrimaryKeys(false))
+						->delete($con);
+					$this->actorsRelatedByActorIdScheduledForDeletion = null;
+				}
+
+				foreach ($this->getActorsRelatedByActorId() as $actorRelatedByActorId) {
+					if ($actorRelatedByActorId->isModified()) {
+						$actorRelatedByActorId->save($con);
+					}
+				}
 			}
 
 			if ($this->collActorHasMoviesRelatedByMovieId !== null) {
@@ -1304,6 +1326,37 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	}
 
 	/**
+	 * Sets a collection of Actor objects related by a many-to-many relationship
+	 * to the current object by way of the propel_actors_movies cross-reference table.
+	 * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+	 * and new objects from the given Propel collection.
+	 *
+	 * @param      PropelCollection $actorsRelatedByActorId A Propel collection.
+	 * @param      PropelPDO $con Optional connection object
+	 */
+	public function setActorsRelatedByActorId(PropelCollection $actorsRelatedByActorId, PropelPDO $con = null)
+	{
+		$actorHasMovies = ActorHasMovieRelatedByMovieIdQuery::create()
+			->filterByActor($actorsRelatedByActorId)
+			->filterByMovieRelatedByMovieId($this)
+			->find($con);
+
+		$this->actorsRelatedByActorIdScheduledForDeletion = $this->getActorHasMoviesRelatedByMovieId()->diff($actorHasMovies);
+		$this->collBookListRels = $actorHasMovies;
+
+		foreach ($actorsRelatedByActorId as $actorRelatedByActorId) {
+			// Fix issue with collection modified by reference
+			if ($actorRelatedByActorId->isNew()) {
+				$this->doAddActor($actorRelatedByActorId);
+			} else {
+				$this->addActor($actorRelatedByActorId);
+			}
+		}
+
+		$this->collActorsRelatedByActorId = $actorsRelatedByActorId;
+	}
+
+	/**
 	 * Gets the number of Actor objects related by a many-to-many relationship
 	 * to the current object by way of the propel_actors_movies cross-reference table.
 	 *
@@ -1345,12 +1398,20 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 			$this->initActorsRelatedByActorId();
 		}
 		if (!$this->collActorsRelatedByActorId->contains($actor)) { // only add it if the **same** object is not already associated
-			$actorHasMovie = new ActorHasMovie();
-			$actorHasMovie->setActorRelatedByActorId($actor);
-			$this->addActorHasMovieRelatedByMovieId($actorHasMovie);
+			$this->doAddActorRelatedByActorId($actor);
 
 			$this->collActorsRelatedByActorId[]= $actor;
 		}
+	}
+
+	/**
+	 * @param	ActorRelatedByActorId $actorRelatedByActorId The actorRelatedByActorId object to add.
+	 */
+	protected function doAddActorRelatedByActorId($actorRelatedByActorId)
+	{
+		$actorHasMovie = new ActorHasMovie();
+		$actorHasMovie->setActorRelatedByActorId($actorRelatedByActorId);
+		$this->addActorHasMovie($actorHasMovie);
 	}
 
 	/**
