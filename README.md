@@ -5,6 +5,12 @@ https://github.com/cedriclombardot/AdmingeneratorGeneratorBundle
 
 # How to install
 
+Copy and configure your db connections in paramaters.ini
+
+```
+cp app/config/parameters.ini.sample app/config/parameters.ini
+```
+
 Run in your schell the nexts commands lines
 
 ```
