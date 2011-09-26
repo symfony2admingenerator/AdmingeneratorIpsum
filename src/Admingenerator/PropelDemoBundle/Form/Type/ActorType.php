@@ -16,4 +16,11 @@ class ActorType extends AbstractType
     {
         return 'propel_embed_actor';
     }
+    
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Admingenerator\PropelDemoBundle\Model\Actor',
+        );
+    }
 }

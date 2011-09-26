@@ -70,14 +70,14 @@ builders:
     params:
       title: You're editing the movie "{{ Movie.title }}"
       fields:
-        Actors:
+        actors:
           formType: collection
           dbType: collection
           addFormOptions:
             type: \Admingenerator\PropelDemoBundle\Form\Type\ActorType
       display:
         "NONE": [ title, release_date ]
-        "Other informations": [[ is_published ], [producer, Actors ]]
+        "Other informations": [[ is_published ], [producer, actors ]]
       actions:
         list: ~
   delete: ~
