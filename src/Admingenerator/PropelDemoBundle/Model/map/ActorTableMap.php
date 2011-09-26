@@ -42,7 +42,7 @@ class ActorTableMap extends TableMap
 		$this->setPackage('host/admingen/src/Admingenerator/PropelDemoBundle/Model');
 		$this->setUseIdGenerator(true);
 		// columns
-		$this->addForeignPrimaryKey('ID', 'Id', 'INTEGER' , 'propel_actors_movies', 'ACTOR_ID', true, null, null);
+		$this->addPrimaryKey('ID', 'Id', 'INTEGER', true, null, null);
 		$this->addColumn('NAME', 'Name', 'VARCHAR', true, 255, null);
 		$this->getColumn('NAME', false)->setPrimaryString(true);
 		// validators
@@ -53,9 +53,8 @@ class ActorTableMap extends TableMap
 	 */
 	public function buildRelations()
 	{
-		$this->addRelation('ActorHasMovieRelatedById', 'Admingenerator\\PropelDemoBundle\\Model\\ActorHasMovie', RelationMap::MANY_TO_ONE, array('id' => 'actor_id', ), 'CASCADE', 'CASCADE');
-		$this->addRelation('ActorHasMovieRelatedByActorId', 'Admingenerator\\PropelDemoBundle\\Model\\ActorHasMovie', RelationMap::ONE_TO_MANY, array('id' => 'actor_id', ), null, null, 'ActorHasMoviesRelatedByActorId');
-		$this->addRelation('MovieRelatedByMovieId', 'Admingenerator\\PropelDemoBundle\\Model\\Movie', RelationMap::MANY_TO_MANY, array(), null, null, 'MoviesRelatedByMovieId');
+		$this->addRelation('ActorHasMovie', 'Admingenerator\\PropelDemoBundle\\Model\\ActorHasMovie', RelationMap::ONE_TO_MANY, array('id' => 'actor_id', ), null, null, 'ActorHasMovies');
+		$this->addRelation('Movie', 'Admingenerator\\PropelDemoBundle\\Model\\Movie', RelationMap::MANY_TO_MANY, array(), null, null, 'Movies');
 	} // buildRelations()
 
 } // ActorTableMap

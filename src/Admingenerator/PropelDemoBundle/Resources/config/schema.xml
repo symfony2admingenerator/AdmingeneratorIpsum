@@ -4,9 +4,6 @@
     <table name="propel_actors" phpName="Actor">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="name" type="varchar" required="true" primaryString="true" size="255" />
-        <foreign-key foreignTable="propel_actors_movies" onDelete="cascade" onUpdate="cascade">
-            <reference local="id" foreign="actor_id" />
-        </foreign-key>
         <index>
             <index-column name="name" />
         </index>
@@ -21,11 +18,7 @@
         <foreign-key foreignTable="propel_producers" onDelete="cascade" onUpdate="cascade">
             <reference local="producer_id" foreign="id" />
         </foreign-key>
-        
-        <foreign-key foreignTable="propel_actors_movies" onDelete="cascade" onUpdate="cascade">
-            <reference local="id" foreign="movie_id" />
-        </foreign-key>
-        
+
         <index>
             <index-column name="title" />
         </index>

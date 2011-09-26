@@ -83,19 +83,14 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	protected $aProducer;
 
 	/**
-	 * @var        ActorHasMovie
-	 */
-	protected $aActorHasMovieRelatedById;
-
-	/**
 	 * @var        array ActorHasMovie[] Collection to store aggregation of ActorHasMovie objects.
 	 */
-	protected $collActorHasMoviesRelatedByMovieId;
+	protected $collActorHasMovies;
 
 	/**
 	 * @var        array Actor[] Collection to store aggregation of Actor objects.
 	 */
-	protected $collActorsRelatedByActorId;
+	protected $collActors;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -115,7 +110,7 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * An array of objects scheduled for deletion.
 	 * @var		array
 	 */
-	protected $actorsRelatedByActorIdScheduledForDeletion = null;
+	protected $actorsScheduledForDeletion = null;
 
 	/**
 	 * Get the [id] column value.
@@ -210,10 +205,6 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 		if ($this->id !== $v) {
 			$this->id = $v;
 			$this->modifiedColumns[] = MoviePeer::ID;
-		}
-
-		if ($this->aActorHasMovieRelatedById !== null && $this->aActorHasMovieRelatedById->getMovieId() !== $v) {
-			$this->aActorHasMovieRelatedById = null;
 		}
 
 		return $this;
@@ -381,9 +372,6 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	public function ensureConsistency()
 	{
 
-		if ($this->aActorHasMovieRelatedById !== null && $this->id !== $this->aActorHasMovieRelatedById->getMovieId()) {
-			$this->aActorHasMovieRelatedById = null;
-		}
 		if ($this->aProducer !== null && $this->producer_id !== $this->aProducer->getId()) {
 			$this->aProducer = null;
 		}
@@ -427,10 +415,9 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 		if ($deep) {  // also de-associate any related objects?
 
 			$this->aProducer = null;
-			$this->aActorHasMovieRelatedById = null;
-			$this->collActorHasMoviesRelatedByMovieId = null;
+			$this->collActorHasMovies = null;
 
-			$this->collActorsRelatedByActorId = null;
+			$this->collActors = null;
 		} // if (deep)
 	}
 
@@ -553,13 +540,6 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 				$this->setProducer($this->aProducer);
 			}
 
-			if ($this->aActorHasMovieRelatedById !== null) {
-				if ($this->aActorHasMovieRelatedById->isModified() || $this->aActorHasMovieRelatedById->isNew()) {
-					$affectedRows += $this->aActorHasMovieRelatedById->save($con);
-				}
-				$this->setActorHasMovieRelatedById($this->aActorHasMovieRelatedById);
-			}
-
 			if ($this->isNew() ) {
 				$this->modifiedColumns[] = MoviePeer::ID;
 			}
@@ -583,23 +563,23 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
 			}
 
-			if ($this->actorsRelatedByActorIdScheduledForDeletion !== null) {
-				if (!$this->actorsRelatedByActorIdScheduledForDeletion->isEmpty()) {
-					ActorHasMovieRelatedByMovieIdQuery::create()
-						->filterByPrimaryKeys($this->actorsRelatedByActorIdScheduledForDeletion->getPrimaryKeys(false))
+			if ($this->actorsScheduledForDeletion !== null) {
+				if (!$this->actorsScheduledForDeletion->isEmpty()) {
+					ActorHasMovieQuery::create()
+						->filterByPrimaryKeys($this->actorsScheduledForDeletion->getPrimaryKeys(false))
 						->delete($con);
-					$this->actorsRelatedByActorIdScheduledForDeletion = null;
+					$this->actorsScheduledForDeletion = null;
 				}
 
-				foreach ($this->getActorsRelatedByActorId() as $actorRelatedByActorId) {
-					if ($actorRelatedByActorId->isModified()) {
-						$actorRelatedByActorId->save($con);
+				foreach ($this->getActors() as $actor) {
+					if ($actor->isModified()) {
+						$actor->save($con);
 					}
 				}
 			}
 
-			if ($this->collActorHasMoviesRelatedByMovieId !== null) {
-				foreach ($this->collActorHasMoviesRelatedByMovieId as $referrerFK) {
+			if ($this->collActorHasMovies !== null) {
+				foreach ($this->collActorHasMovies as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -683,20 +663,14 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 				}
 			}
 
-			if ($this->aActorHasMovieRelatedById !== null) {
-				if (!$this->aActorHasMovieRelatedById->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aActorHasMovieRelatedById->getValidationFailures());
-				}
-			}
-
 
 			if (($retval = MoviePeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
 
-				if ($this->collActorHasMoviesRelatedByMovieId !== null) {
-					foreach ($this->collActorHasMoviesRelatedByMovieId as $referrerFK) {
+				if ($this->collActorHasMovies !== null) {
+					foreach ($this->collActorHasMovies as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -790,11 +764,8 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 			if (null !== $this->aProducer) {
 				$result['Producer'] = $this->aProducer->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
 			}
-			if (null !== $this->aActorHasMovieRelatedById) {
-				$result['ActorHasMovieRelatedById'] = $this->aActorHasMovieRelatedById->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
-			}
-			if (null !== $this->collActorHasMoviesRelatedByMovieId) {
-				$result['ActorHasMoviesRelatedByMovieId'] = $this->collActorHasMoviesRelatedByMovieId->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+			if (null !== $this->collActorHasMovies) {
+				$result['ActorHasMovies'] = $this->collActorHasMovies->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
 			}
 		}
 		return $result;
@@ -959,9 +930,9 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 			// the getter/setter methods for fkey referrer objects.
 			$copyObj->setNew(false);
 
-			foreach ($this->getActorHasMoviesRelatedByMovieId() as $relObj) {
+			foreach ($this->getActorHasMovies() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-					$copyObj->addActorHasMovieRelatedByMovieId($relObj->copy($deepCopy));
+					$copyObj->addActorHasMovie($relObj->copy($deepCopy));
 				}
 			}
 
@@ -1060,51 +1031,6 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 		return $this->aProducer;
 	}
 
-	/**
-	 * Declares an association between this object and a ActorHasMovie object.
-	 *
-	 * @param      ActorHasMovie $v
-	 * @return     Movie The current object (for fluent API support)
-	 * @throws     PropelException
-	 */
-	public function setActorHasMovieRelatedById(ActorHasMovie $v = null)
-	{
-		if ($v === null) {
-			$this->setId(NULL);
-		} else {
-			$this->setId($v->getMovieId());
-		}
-
-		$this->aActorHasMovieRelatedById = $v;
-
-		// Add binding for other direction of this 1:1 relationship.
-		if ($v !== null) {
-			$v->setMovieRelatedById($this);
-		}
-
-		return $this;
-	}
-
-
-	/**
-	 * Get the associated ActorHasMovie object
-	 *
-	 * @param      PropelPDO Optional Connection object.
-	 * @return     ActorHasMovie The associated ActorHasMovie object.
-	 * @throws     PropelException
-	 */
-	public function getActorHasMovieRelatedById(PropelPDO $con = null)
-	{
-		if ($this->aActorHasMovieRelatedById === null && ($this->id !== null)) {
-			$this->aActorHasMovieRelatedById = ActorHasMovieQuery::create()
-				->filterByMovieRelatedById($this) // here
-				->findOne($con);
-			// Because this foreign key represents a one-to-one relationship, we will create a bi-directional association.
-			$this->aActorHasMovieRelatedById->setMovieRelatedById($this);
-		}
-		return $this->aActorHasMovieRelatedById;
-	}
-
 
 	/**
 	 * Initializes a collection based on the name of a relation.
@@ -1116,29 +1042,29 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 */
 	public function initRelation($relationName)
 	{
-		if ('ActorHasMovieRelatedByMovieId' == $relationName) {
-			return $this->initActorHasMoviesRelatedByMovieId();
+		if ('ActorHasMovie' == $relationName) {
+			return $this->initActorHasMovies();
 		}
 	}
 
 	/**
-	 * Clears out the collActorHasMoviesRelatedByMovieId collection
+	 * Clears out the collActorHasMovies collection
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
 	 * them to be refetched by subsequent calls to accessor method.
 	 *
 	 * @return     void
-	 * @see        addActorHasMoviesRelatedByMovieId()
+	 * @see        addActorHasMovies()
 	 */
-	public function clearActorHasMoviesRelatedByMovieId()
+	public function clearActorHasMovies()
 	{
-		$this->collActorHasMoviesRelatedByMovieId = null; // important to set this to NULL since that means it is uninitialized
+		$this->collActorHasMovies = null; // important to set this to NULL since that means it is uninitialized
 	}
 
 	/**
-	 * Initializes the collActorHasMoviesRelatedByMovieId collection.
+	 * Initializes the collActorHasMovies collection.
 	 *
-	 * By default this just sets the collActorHasMoviesRelatedByMovieId collection to an empty array (like clearcollActorHasMoviesRelatedByMovieId());
+	 * By default this just sets the collActorHasMovies collection to an empty array (like clearcollActorHasMovies());
 	 * however, you may wish to override this method in your stub class to provide setting appropriate
 	 * to your application -- for example, setting the initial array to the values stored in database.
 	 *
@@ -1147,13 +1073,13 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 *
 	 * @return     void
 	 */
-	public function initActorHasMoviesRelatedByMovieId($overrideExisting = true)
+	public function initActorHasMovies($overrideExisting = true)
 	{
-		if (null !== $this->collActorHasMoviesRelatedByMovieId && !$overrideExisting) {
+		if (null !== $this->collActorHasMovies && !$overrideExisting) {
 			return;
 		}
-		$this->collActorHasMoviesRelatedByMovieId = new PropelObjectCollection();
-		$this->collActorHasMoviesRelatedByMovieId->setModel('ActorHasMovie');
+		$this->collActorHasMovies = new PropelObjectCollection();
+		$this->collActorHasMovies->setModel('ActorHasMovie');
 	}
 
 	/**
@@ -1170,23 +1096,23 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @return     PropelCollection|array ActorHasMovie[] List of ActorHasMovie objects
 	 * @throws     PropelException
 	 */
-	public function getActorHasMoviesRelatedByMovieId($criteria = null, PropelPDO $con = null)
+	public function getActorHasMovies($criteria = null, PropelPDO $con = null)
 	{
-		if(null === $this->collActorHasMoviesRelatedByMovieId || null !== $criteria) {
-			if ($this->isNew() && null === $this->collActorHasMoviesRelatedByMovieId) {
+		if(null === $this->collActorHasMovies || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActorHasMovies) {
 				// return empty collection
-				$this->initActorHasMoviesRelatedByMovieId();
+				$this->initActorHasMovies();
 			} else {
-				$collActorHasMoviesRelatedByMovieId = ActorHasMovieQuery::create(null, $criteria)
-					->filterByMovieRelatedByMovieId($this)
+				$collActorHasMovies = ActorHasMovieQuery::create(null, $criteria)
+					->filterByMovie($this)
 					->find($con);
 				if (null !== $criteria) {
-					return $collActorHasMoviesRelatedByMovieId;
+					return $collActorHasMovies;
 				}
-				$this->collActorHasMoviesRelatedByMovieId = $collActorHasMoviesRelatedByMovieId;
+				$this->collActorHasMovies = $collActorHasMovies;
 			}
 		}
-		return $this->collActorHasMoviesRelatedByMovieId;
+		return $this->collActorHasMovies;
 	}
 
 	/**
@@ -1198,10 +1124,10 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @return     int Count of related ActorHasMovie objects.
 	 * @throws     PropelException
 	 */
-	public function countActorHasMoviesRelatedByMovieId(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	public function countActorHasMovies(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
 	{
-		if(null === $this->collActorHasMoviesRelatedByMovieId || null !== $criteria) {
-			if ($this->isNew() && null === $this->collActorHasMoviesRelatedByMovieId) {
+		if(null === $this->collActorHasMovies || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActorHasMovies) {
 				return 0;
 			} else {
 				$query = ActorHasMovieQuery::create(null, $criteria);
@@ -1209,11 +1135,11 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 					$query->distinct();
 				}
 				return $query
-					->filterByMovieRelatedByMovieId($this)
+					->filterByMovie($this)
 					->count($con);
 			}
 		} else {
-			return count($this->collActorHasMoviesRelatedByMovieId);
+			return count($this->collActorHasMovies);
 		}
 	}
 
@@ -1224,14 +1150,14 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @param      ActorHasMovie $l ActorHasMovie
 	 * @return     Movie The current object (for fluent API support)
 	 */
-	public function addActorHasMovieRelatedByMovieId(ActorHasMovie $l)
+	public function addActorHasMovie(ActorHasMovie $l)
 	{
-		if ($this->collActorHasMoviesRelatedByMovieId === null) {
-			$this->initActorHasMoviesRelatedByMovieId();
+		if ($this->collActorHasMovies === null) {
+			$this->initActorHasMovies();
 		}
-		if (!$this->collActorHasMoviesRelatedByMovieId->contains($l)) { // only add it if the **same** object is not already associated
-			$this->collActorHasMoviesRelatedByMovieId[]= $l;
-			$l->setMovieRelatedByMovieId($this);
+		if (!$this->collActorHasMovies->contains($l)) { // only add it if the **same** object is not already associated
+			$this->collActorHasMovies[]= $l;
+			$l->setMovie($this);
 		}
 
 		return $this;
@@ -1243,7 +1169,7 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * an identical criteria, it returns the collection.
 	 * Otherwise if this Movie is new, it will return
 	 * an empty collection; or if this Movie has previously
-	 * been saved, it will retrieve related ActorHasMoviesRelatedByMovieId from storage.
+	 * been saved, it will retrieve related ActorHasMovies from storage.
 	 *
 	 * This method is protected by default in order to keep the public
 	 * api reasonable.  You can provide public methods for those you
@@ -1254,41 +1180,41 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @param      string $join_behavior optional join type to use (defaults to Criteria::LEFT_JOIN)
 	 * @return     PropelCollection|array ActorHasMovie[] List of ActorHasMovie objects
 	 */
-	public function getActorHasMoviesRelatedByMovieIdJoinActorRelatedByActorId($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public function getActorHasMoviesJoinActor($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$query = ActorHasMovieQuery::create(null, $criteria);
-		$query->joinWith('ActorRelatedByActorId', $join_behavior);
+		$query->joinWith('Actor', $join_behavior);
 
-		return $this->getActorHasMoviesRelatedByMovieId($query, $con);
+		return $this->getActorHasMovies($query, $con);
 	}
 
 	/**
-	 * Clears out the collActorsRelatedByActorId collection
+	 * Clears out the collActors collection
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
 	 * them to be refetched by subsequent calls to accessor method.
 	 *
 	 * @return     void
-	 * @see        addActorsRelatedByActorId()
+	 * @see        addActors()
 	 */
-	public function clearActorsRelatedByActorId()
+	public function clearActors()
 	{
-		$this->collActorsRelatedByActorId = null; // important to set this to NULL since that means it is uninitialized
+		$this->collActors = null; // important to set this to NULL since that means it is uninitialized
 	}
 
 	/**
-	 * Initializes the collActorsRelatedByActorId collection.
+	 * Initializes the collActors collection.
 	 *
-	 * By default this just sets the collActorsRelatedByActorId collection to an empty collection (like clearActorsRelatedByActorId());
+	 * By default this just sets the collActors collection to an empty collection (like clearActors());
 	 * however, you may wish to override this method in your stub class to provide setting appropriate
 	 * to your application -- for example, setting the initial array to the values stored in database.
 	 *
 	 * @return     void
 	 */
-	public function initActorsRelatedByActorId()
+	public function initActors()
 	{
-		$this->collActorsRelatedByActorId = new PropelObjectCollection();
-		$this->collActorsRelatedByActorId->setModel('Actor');
+		$this->collActors = new PropelObjectCollection();
+		$this->collActors->setModel('Actor');
 	}
 
 	/**
@@ -1306,23 +1232,23 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 *
 	 * @return     PropelCollection|array Actor[] List of Actor objects
 	 */
-	public function getActorsRelatedByActorId($criteria = null, PropelPDO $con = null)
+	public function getActors($criteria = null, PropelPDO $con = null)
 	{
-		if(null === $this->collActorsRelatedByActorId || null !== $criteria) {
-			if ($this->isNew() && null === $this->collActorsRelatedByActorId) {
+		if(null === $this->collActors || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActors) {
 				// return empty collection
-				$this->initActorsRelatedByActorId();
+				$this->initActors();
 			} else {
-				$collActorsRelatedByActorId = ActorQuery::create(null, $criteria)
-					->filterByMovieRelatedByMovieId($this)
+				$collActors = ActorQuery::create(null, $criteria)
+					->filterByMovie($this)
 					->find($con);
 				if (null !== $criteria) {
-					return $collActorsRelatedByActorId;
+					return $collActors;
 				}
-				$this->collActorsRelatedByActorId = $collActorsRelatedByActorId;
+				$this->collActors = $collActors;
 			}
 		}
-		return $this->collActorsRelatedByActorId;
+		return $this->collActors;
 	}
 
 	/**
@@ -1331,29 +1257,29 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
 	 * and new objects from the given Propel collection.
 	 *
-	 * @param      PropelCollection $actorsRelatedByActorId A Propel collection.
+	 * @param      PropelCollection $actors A Propel collection.
 	 * @param      PropelPDO $con Optional connection object
 	 */
-	public function setActorsRelatedByActorId(PropelCollection $actorsRelatedByActorId, PropelPDO $con = null)
+	public function setActors(PropelCollection $actors, PropelPDO $con = null)
 	{
-		$actorHasMovies = ActorHasMovieRelatedByMovieIdQuery::create()
-			->filterByActor($actorsRelatedByActorId)
-			->filterByMovieRelatedByMovieId($this)
+		$actorHasMovies = ActorHasMovieQuery::create()
+			->filterByActor($actors)
+			->filterByMovie($this)
 			->find($con);
 
-		$this->actorsRelatedByActorIdScheduledForDeletion = $this->getActorHasMoviesRelatedByMovieId()->diff($actorHasMovies);
+		$this->actorsScheduledForDeletion = $this->getActorHasMovies()->diff($actorHasMovies);
 		$this->collBookListRels = $actorHasMovies;
 
-		foreach ($actorsRelatedByActorId as $actorRelatedByActorId) {
+		foreach ($actors as $actor) {
 			// Fix issue with collection modified by reference
-			if ($actorRelatedByActorId->isNew()) {
-				$this->doAddActor($actorRelatedByActorId);
+			if ($actor->isNew()) {
+				$this->doAddActor($actor);
 			} else {
-				$this->addActor($actorRelatedByActorId);
+				$this->addActor($actor);
 			}
 		}
 
-		$this->collActorsRelatedByActorId = $actorsRelatedByActorId;
+		$this->collActors = $actors;
 	}
 
 	/**
@@ -1366,10 +1292,10 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 *
 	 * @return     int the number of related Actor objects
 	 */
-	public function countActorsRelatedByActorId($criteria = null, $distinct = false, PropelPDO $con = null)
+	public function countActors($criteria = null, $distinct = false, PropelPDO $con = null)
 	{
-		if(null === $this->collActorsRelatedByActorId || null !== $criteria) {
-			if ($this->isNew() && null === $this->collActorsRelatedByActorId) {
+		if(null === $this->collActors || null !== $criteria) {
+			if ($this->isNew() && null === $this->collActors) {
 				return 0;
 			} else {
 				$query = ActorQuery::create(null, $criteria);
@@ -1377,11 +1303,11 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 					$query->distinct();
 				}
 				return $query
-					->filterByMovieRelatedByMovieId($this)
+					->filterByMovie($this)
 					->count($con);
 			}
 		} else {
-			return count($this->collActorsRelatedByActorId);
+			return count($this->collActors);
 		}
 	}
 
@@ -1392,25 +1318,25 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	 * @param      Actor $actor The ActorHasMovie object to relate
 	 * @return     void
 	 */
-	public function addActorRelatedByActorId($actor)
+	public function addActor($actor)
 	{
-		if ($this->collActorsRelatedByActorId === null) {
-			$this->initActorsRelatedByActorId();
+		if ($this->collActors === null) {
+			$this->initActors();
 		}
-		if (!$this->collActorsRelatedByActorId->contains($actor)) { // only add it if the **same** object is not already associated
-			$this->doAddActorRelatedByActorId($actor);
+		if (!$this->collActors->contains($actor)) { // only add it if the **same** object is not already associated
+			$this->doAddActor($actor);
 
-			$this->collActorsRelatedByActorId[]= $actor;
+			$this->collActors[]= $actor;
 		}
 	}
 
 	/**
-	 * @param	ActorRelatedByActorId $actorRelatedByActorId The actorRelatedByActorId object to add.
+	 * @param	Actor $actor The actor object to add.
 	 */
-	protected function doAddActorRelatedByActorId($actorRelatedByActorId)
+	protected function doAddActor($actor)
 	{
 		$actorHasMovie = new ActorHasMovie();
-		$actorHasMovie->setActorRelatedByActorId($actorRelatedByActorId);
+		$actorHasMovie->setActor($actor);
 		$this->addActorHasMovie($actorHasMovie);
 	}
 
@@ -1444,28 +1370,27 @@ abstract class BaseMovie extends BaseObject  implements Persistent
 	public function clearAllReferences($deep = false)
 	{
 		if ($deep) {
-			if ($this->collActorHasMoviesRelatedByMovieId) {
-				foreach ($this->collActorHasMoviesRelatedByMovieId as $o) {
+			if ($this->collActorHasMovies) {
+				foreach ($this->collActorHasMovies as $o) {
 					$o->clearAllReferences($deep);
 				}
 			}
-			if ($this->collActorsRelatedByActorId) {
-				foreach ($this->collActorsRelatedByActorId as $o) {
+			if ($this->collActors) {
+				foreach ($this->collActors as $o) {
 					$o->clearAllReferences($deep);
 				}
 			}
 		} // if ($deep)
 
-		if ($this->collActorHasMoviesRelatedByMovieId instanceof PropelCollection) {
-			$this->collActorHasMoviesRelatedByMovieId->clearIterator();
+		if ($this->collActorHasMovies instanceof PropelCollection) {
+			$this->collActorHasMovies->clearIterator();
 		}
-		$this->collActorHasMoviesRelatedByMovieId = null;
-		if ($this->collActorsRelatedByActorId instanceof PropelCollection) {
-			$this->collActorsRelatedByActorId->clearIterator();
+		$this->collActorHasMovies = null;
+		if ($this->collActors instanceof PropelCollection) {
+			$this->collActors->clearIterator();
 		}
-		$this->collActorsRelatedByActorId = null;
+		$this->collActors = null;
 		$this->aProducer = null;
-		$this->aActorHasMovieRelatedById = null;
 	}
 
 	/**

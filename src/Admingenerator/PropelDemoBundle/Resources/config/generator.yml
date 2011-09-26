@@ -59,25 +59,25 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, release_date, producer, ActorRelatedByActorId ]
+      display: [ title, is_published, release_date, producer, ActorHasMovie ]
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, release_date, producer, ActorRelatedByActorId ]
+      display: [ title, is_published, release_date, producer, ActorHasMovie ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
       fields:
-        ActorsRelatedByActorId:
-          dbType: collection
+        Actors:
           formType: collection
+          dbType: collection
           addFormOptions:
             type: \Admingenerator\PropelDemoBundle\Form\Type\ActorType
       display:
         "NONE": [ title, release_date ]
-        "Other informations": [[ is_published ], [producer, ActorsRelatedByActorId ]]
+        "Other informations": [[ is_published ], [producer, Actors ]]
       actions:
         list: ~
   delete: ~

@@ -363,12 +363,6 @@ abstract class BaseActorHasMoviePeer {
 	 */
 	public static function clearRelatedInstancePool()
 	{
-		// Invalidate objects in ActorPeer instance pool,
-		// since one or more of them may be deleted by ON DELETE CASCADE/SETNULL rule.
-		ActorPeer::clearInstancePool();
-		// Invalidate objects in MoviePeer instance pool,
-		// since one or more of them may be deleted by ON DELETE CASCADE/SETNULL rule.
-		MoviePeer::clearInstancePool();
 	}
 
 	/**
@@ -463,7 +457,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related ActorRelatedByActorId table
+	 * Returns the number of rows matching criteria, joining the related Actor table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -471,7 +465,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinActorRelatedByActorId(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinActor(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -513,7 +507,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related MovieRelatedByMovieId table
+	 * Returns the number of rows matching criteria, joining the related Movie table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -521,7 +515,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinMovieRelatedByMovieId(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinMovie(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -571,7 +565,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinActorRelatedByActorId(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinActor(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -617,7 +611,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if obj2 already loaded
 
 				// Add the $obj1 (ActorHasMovie) to $obj2 (Actor)
-				$obj2->addActorHasMovieRelatedByActorId($obj1);
+				$obj2->addActorHasMovie($obj1);
 
 			} // if joined row was not null
 
@@ -637,7 +631,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinMovieRelatedByMovieId(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinMovie(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -683,7 +677,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if obj2 already loaded
 
 				// Add the $obj1 (ActorHasMovie) to $obj2 (Movie)
-				$obj2->addActorHasMovieRelatedByMovieId($obj1);
+				$obj2->addActorHasMovie($obj1);
 
 			} // if joined row was not null
 
@@ -809,7 +803,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if obj2 loaded
 
 				// Add the $obj1 (ActorHasMovie) to the collection in $obj2 (Actor)
-				$obj2->addActorHasMovieRelatedByActorId($obj1);
+				$obj2->addActorHasMovie($obj1);
 			} // if joined row not null
 
 			// Add objects for joined Movie rows
@@ -827,7 +821,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if obj3 loaded
 
 				// Add the $obj1 (ActorHasMovie) to the collection in $obj3 (Movie)
-				$obj3->addActorHasMovieRelatedByMovieId($obj1);
+				$obj3->addActorHasMovie($obj1);
 			} // if joined row not null
 
 			$results[] = $obj1;
@@ -838,7 +832,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related ActorRelatedByActorId table
+	 * Returns the number of rows matching criteria, joining the related Actor table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -846,7 +840,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinAllExceptActorRelatedByActorId(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptActor(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -888,7 +882,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related MovieRelatedByMovieId table
+	 * Returns the number of rows matching criteria, joining the related Movie table
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -896,7 +890,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinAllExceptMovieRelatedByMovieId(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptMovie(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -938,7 +932,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Selects a collection of ActorHasMovie objects pre-filled with all related objects except ActorRelatedByActorId.
+	 * Selects a collection of ActorHasMovie objects pre-filled with all related objects except Actor.
 	 *
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
@@ -947,7 +941,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinAllExceptActorRelatedByActorId(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinAllExceptActor(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -999,7 +993,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if $obj2 already loaded
 
 				// Add the $obj1 (ActorHasMovie) to the collection in $obj2 (Movie)
-				$obj2->addActorHasMovieRelatedByMovieId($obj1);
+				$obj2->addActorHasMovie($obj1);
 
 			} // if joined row is not null
 
@@ -1011,7 +1005,7 @@ abstract class BaseActorHasMoviePeer {
 
 
 	/**
-	 * Selects a collection of ActorHasMovie objects pre-filled with all related objects except MovieRelatedByMovieId.
+	 * Selects a collection of ActorHasMovie objects pre-filled with all related objects except Movie.
 	 *
 	 * @param      Criteria  $criteria
 	 * @param      PropelPDO $con
@@ -1020,7 +1014,7 @@ abstract class BaseActorHasMoviePeer {
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinAllExceptMovieRelatedByMovieId(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinAllExceptMovie(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$criteria = clone $criteria;
 
@@ -1072,7 +1066,7 @@ abstract class BaseActorHasMoviePeer {
 				} // if $obj2 already loaded
 
 				// Add the $obj1 (ActorHasMovie) to the collection in $obj2 (Actor)
-				$obj2->addActorHasMovieRelatedByActorId($obj1);
+				$obj2->addActorHasMovie($obj1);
 
 			} // if joined row is not null
 
@@ -1224,7 +1218,6 @@ abstract class BaseActorHasMoviePeer {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += ActorHasMoviePeer::doOnDeleteCascade(new Criteria(ActorHasMoviePeer::DATABASE_NAME), $con);
 			$affectedRows += BasePeer::doDeleteAll(ActorHasMoviePeer::TABLE_NAME, $con, ActorHasMoviePeer::DATABASE_NAME);
 			// Because this db requires some delete cascade/set null emulation, we have to
 			// clear the cached instance *after* the emulation has happened (since
@@ -1257,9 +1250,15 @@ abstract class BaseActorHasMoviePeer {
 		}
 
 		if ($values instanceof Criteria) {
+			// invalidate the cache for all objects of this type, since we have no
+			// way of knowing (without running a query) what objects should be invalidated
+			// from the cache based on this Criteria.
+			ActorHasMoviePeer::clearInstancePool();
 			// rename for clarity
 			$criteria = clone $values;
 		} elseif ($values instanceof ActorHasMovie) { // it's a model object
+			// invalidate the cache for this single object
+			ActorHasMoviePeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else { // it's a primary key, or an array of pks
@@ -1274,6 +1273,8 @@ abstract class BaseActorHasMoviePeer {
 				$criterion = $criteria->getNewCriterion(ActorHasMoviePeer::ACTOR_ID, $value[0]);
 				$criterion->addAnd($criteria->getNewCriterion(ActorHasMoviePeer::MOVIE_ID, $value[1]));
 				$criteria->addOr($criterion);
+				// we can invalidate the cache for this single PK
+				ActorHasMoviePeer::removeInstanceFromPool($value);
 			}
 		}
 
@@ -1287,23 +1288,6 @@ abstract class BaseActorHasMoviePeer {
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
 			
-			// cloning the Criteria in case it's modified by doSelect() or doSelectStmt()
-			$c = clone $criteria;
-			$affectedRows += ActorHasMoviePeer::doOnDeleteCascade($c, $con);
-			
-			// Because this db requires some delete cascade/set null emulation, we have to
-			// clear the cached instance *after* the emulation has happened (since
-			// instances get re-added by the select statement contained therein).
-			if ($values instanceof Criteria) {
-				ActorHasMoviePeer::clearInstancePool();
-			} elseif ($values instanceof ActorHasMovie) { // it's a model object
-				ActorHasMoviePeer::removeInstanceFromPool($values);
-			} else { // it's a primary key, or an array of pks
-				foreach ((array) $values as $singleval) {
-					ActorHasMoviePeer::removeInstanceFromPool($singleval);
-				}
-			}
-			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			ActorHasMoviePeer::clearRelatedInstancePool();
 			$con->commit();
@@ -1312,44 +1296,6 @@ abstract class BaseActorHasMoviePeer {
 			$con->rollBack();
 			throw $e;
 		}
-	}
-
-	/**
-	 * This is a method for emulating ON DELETE CASCADE for DBs that don't support this
-	 * feature (like MySQL or SQLite).
-	 *
-	 * This method is not very speedy because it must perform a query first to get
-	 * the implicated records and then perform the deletes by calling those Peer classes.
-	 *
-	 * This method should be used within a transaction if possible.
-	 *
-	 * @param      Criteria $criteria
-	 * @param      PropelPDO $con
-	 * @return     int The number of affected rows (if supported by underlying database driver).
-	 */
-	protected static function doOnDeleteCascade(Criteria $criteria, PropelPDO $con)
-	{
-		// initialize var to track total num of affected rows
-		$affectedRows = 0;
-
-		// first find the objects that are implicated by the $criteria
-		$objects = ActorHasMoviePeer::doSelect($criteria, $con);
-		foreach ($objects as $obj) {
-
-
-			// delete related Actor objects
-			$criteria = new Criteria(ActorPeer::DATABASE_NAME);
-			
-			$criteria->add(ActorPeer::ID, $obj->getActorId());
-			$affectedRows += ActorPeer::doDelete($criteria, $con);
-
-			// delete related Movie objects
-			$criteria = new Criteria(MoviePeer::DATABASE_NAME);
-			
-			$criteria->add(MoviePeer::ID, $obj->getMovieId());
-			$affectedRows += MoviePeer::doDelete($criteria, $con);
-		}
-		return $affectedRows;
 	}
 
 	/**

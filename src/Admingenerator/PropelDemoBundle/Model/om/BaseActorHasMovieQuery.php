@@ -28,21 +28,13 @@ use Admingenerator\PropelDemoBundle\Model\Movie;
  * @method     ActorHasMovieQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
  * @method     ActorHasMovieQuery innerJoin($relation) Adds a INNER JOIN clause to the query
  *
- * @method     ActorHasMovieQuery leftJoinActorRelatedByActorId($relationAlias = null) Adds a LEFT JOIN clause to the query using the ActorRelatedByActorId relation
- * @method     ActorHasMovieQuery rightJoinActorRelatedByActorId($relationAlias = null) Adds a RIGHT JOIN clause to the query using the ActorRelatedByActorId relation
- * @method     ActorHasMovieQuery innerJoinActorRelatedByActorId($relationAlias = null) Adds a INNER JOIN clause to the query using the ActorRelatedByActorId relation
+ * @method     ActorHasMovieQuery leftJoinActor($relationAlias = null) Adds a LEFT JOIN clause to the query using the Actor relation
+ * @method     ActorHasMovieQuery rightJoinActor($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Actor relation
+ * @method     ActorHasMovieQuery innerJoinActor($relationAlias = null) Adds a INNER JOIN clause to the query using the Actor relation
  *
- * @method     ActorHasMovieQuery leftJoinMovieRelatedByMovieId($relationAlias = null) Adds a LEFT JOIN clause to the query using the MovieRelatedByMovieId relation
- * @method     ActorHasMovieQuery rightJoinMovieRelatedByMovieId($relationAlias = null) Adds a RIGHT JOIN clause to the query using the MovieRelatedByMovieId relation
- * @method     ActorHasMovieQuery innerJoinMovieRelatedByMovieId($relationAlias = null) Adds a INNER JOIN clause to the query using the MovieRelatedByMovieId relation
- *
- * @method     ActorHasMovieQuery leftJoinActorRelatedById($relationAlias = null) Adds a LEFT JOIN clause to the query using the ActorRelatedById relation
- * @method     ActorHasMovieQuery rightJoinActorRelatedById($relationAlias = null) Adds a RIGHT JOIN clause to the query using the ActorRelatedById relation
- * @method     ActorHasMovieQuery innerJoinActorRelatedById($relationAlias = null) Adds a INNER JOIN clause to the query using the ActorRelatedById relation
- *
- * @method     ActorHasMovieQuery leftJoinMovieRelatedById($relationAlias = null) Adds a LEFT JOIN clause to the query using the MovieRelatedById relation
- * @method     ActorHasMovieQuery rightJoinMovieRelatedById($relationAlias = null) Adds a RIGHT JOIN clause to the query using the MovieRelatedById relation
- * @method     ActorHasMovieQuery innerJoinMovieRelatedById($relationAlias = null) Adds a INNER JOIN clause to the query using the MovieRelatedById relation
+ * @method     ActorHasMovieQuery leftJoinMovie($relationAlias = null) Adds a LEFT JOIN clause to the query using the Movie relation
+ * @method     ActorHasMovieQuery rightJoinMovie($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Movie relation
+ * @method     ActorHasMovieQuery innerJoinMovie($relationAlias = null) Adds a INNER JOIN clause to the query using the Movie relation
  *
  * @method     ActorHasMovie findOne(PropelPDO $con = null) Return the first ActorHasMovie matching the query
  * @method     ActorHasMovie findOneOrCreate(PropelPDO $con = null) Return the first ActorHasMovie matching the query, or a new ActorHasMovie object populated from the query conditions when no match is found
@@ -183,7 +175,7 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      * $query->filterByActorId(array('min' => 12)); // WHERE actor_id > 12
      * </code>
      *
-     * @see       filterByActorRelatedByActorId()
+     * @see       filterByActor()
      *
      * @param     mixed $actorId The value to use as filter.
      *              Use scalar values for equality.
@@ -211,7 +203,7 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      * $query->filterByMovieId(array('min' => 12)); // WHERE movie_id > 12
      * </code>
      *
-     * @see       filterByMovieRelatedByMovieId()
+     * @see       filterByMovie()
      *
      * @param     mixed $movieId The value to use as filter.
      *              Use scalar values for equality.
@@ -237,7 +229,7 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      *
      * @return    ActorHasMovieQuery The current query, for fluid interface
      */
-    public function filterByActorRelatedByActorId($actor, $comparison = null)
+    public function filterByActor($actor, $comparison = null)
     {
         if ($actor instanceof Actor) {
             return $this
@@ -249,22 +241,22 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
             return $this
                 ->addUsingAlias(ActorHasMoviePeer::ACTOR_ID, $actor->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
-            throw new PropelException('filterByActorRelatedByActorId() only accepts arguments of type Actor or PropelCollection');
+            throw new PropelException('filterByActor() only accepts arguments of type Actor or PropelCollection');
         }
     }
 
     /**
-     * Adds a JOIN clause to the query using the ActorRelatedByActorId relation
+     * Adds a JOIN clause to the query using the Actor relation
      *
      * @param     string $relationAlias optional alias for the relation
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
      * @return    ActorHasMovieQuery The current query, for fluid interface
      */
-    public function joinActorRelatedByActorId($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    public function joinActor($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         $tableMap = $this->getTableMap();
-        $relationMap = $tableMap->getRelation('ActorRelatedByActorId');
+        $relationMap = $tableMap->getRelation('Actor');
 
         // create a ModelJoin object for this join
         $join = new ModelJoin();
@@ -279,14 +271,14 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
             $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
             $this->addJoinObject($join, $relationAlias);
         } else {
-            $this->addJoinObject($join, 'ActorRelatedByActorId');
+            $this->addJoinObject($join, 'Actor');
         }
 
         return $this;
     }
 
     /**
-     * Use the ActorRelatedByActorId relation Actor object
+     * Use the Actor relation Actor object
      *
      * @see       useQuery()
      *
@@ -296,11 +288,11 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      *
      * @return    \Admingenerator\PropelDemoBundle\Model\ActorQuery A secondary query class using the current class as primary query
      */
-    public function useActorRelatedByActorIdQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    public function useActorQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
-            ->joinActorRelatedByActorId($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'ActorRelatedByActorId', '\Admingenerator\PropelDemoBundle\Model\ActorQuery');
+            ->joinActor($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Actor', '\Admingenerator\PropelDemoBundle\Model\ActorQuery');
     }
 
     /**
@@ -311,7 +303,7 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      *
      * @return    ActorHasMovieQuery The current query, for fluid interface
      */
-    public function filterByMovieRelatedByMovieId($movie, $comparison = null)
+    public function filterByMovie($movie, $comparison = null)
     {
         if ($movie instanceof Movie) {
             return $this
@@ -323,22 +315,22 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
             return $this
                 ->addUsingAlias(ActorHasMoviePeer::MOVIE_ID, $movie->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
-            throw new PropelException('filterByMovieRelatedByMovieId() only accepts arguments of type Movie or PropelCollection');
+            throw new PropelException('filterByMovie() only accepts arguments of type Movie or PropelCollection');
         }
     }
 
     /**
-     * Adds a JOIN clause to the query using the MovieRelatedByMovieId relation
+     * Adds a JOIN clause to the query using the Movie relation
      *
      * @param     string $relationAlias optional alias for the relation
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
      * @return    ActorHasMovieQuery The current query, for fluid interface
      */
-    public function joinMovieRelatedByMovieId($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    public function joinMovie($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         $tableMap = $this->getTableMap();
-        $relationMap = $tableMap->getRelation('MovieRelatedByMovieId');
+        $relationMap = $tableMap->getRelation('Movie');
 
         // create a ModelJoin object for this join
         $join = new ModelJoin();
@@ -353,14 +345,14 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
             $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
             $this->addJoinObject($join, $relationAlias);
         } else {
-            $this->addJoinObject($join, 'MovieRelatedByMovieId');
+            $this->addJoinObject($join, 'Movie');
         }
 
         return $this;
     }
 
     /**
-     * Use the MovieRelatedByMovieId relation Movie object
+     * Use the Movie relation Movie object
      *
      * @see       useQuery()
      *
@@ -370,157 +362,11 @@ abstract class BaseActorHasMovieQuery extends ModelCriteria
      *
      * @return    \Admingenerator\PropelDemoBundle\Model\MovieQuery A secondary query class using the current class as primary query
      */
-    public function useMovieRelatedByMovieIdQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    public function useMovieQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
-            ->joinMovieRelatedByMovieId($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'MovieRelatedByMovieId', '\Admingenerator\PropelDemoBundle\Model\MovieQuery');
-    }
-
-    /**
-     * Filter the query by a related Actor object
-     *
-     * @param     Actor $actor  the related object to use as filter
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
-     *
-     * @return    ActorHasMovieQuery The current query, for fluid interface
-     */
-    public function filterByActorRelatedById($actor, $comparison = null)
-    {
-        if ($actor instanceof Actor) {
-            return $this
-                ->addUsingAlias(ActorHasMoviePeer::ACTOR_ID, $actor->getId(), $comparison);
-        } elseif ($actor instanceof PropelCollection) {
-            return $this
-                ->useActorRelatedByIdQuery()
-                ->filterByPrimaryKeys($actor->getPrimaryKeys())
-                ->endUse();
-        } else {
-            throw new PropelException('filterByActorRelatedById() only accepts arguments of type Actor or PropelCollection');
-        }
-    }
-
-    /**
-     * Adds a JOIN clause to the query using the ActorRelatedById relation
-     *
-     * @param     string $relationAlias optional alias for the relation
-     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
-     *
-     * @return    ActorHasMovieQuery The current query, for fluid interface
-     */
-    public function joinActorRelatedById($relationAlias = null, $joinType = Criteria::INNER_JOIN)
-    {
-        $tableMap = $this->getTableMap();
-        $relationMap = $tableMap->getRelation('ActorRelatedById');
-
-        // create a ModelJoin object for this join
-        $join = new ModelJoin();
-        $join->setJoinType($joinType);
-        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
-        if ($previousJoin = $this->getPreviousJoin()) {
-            $join->setPreviousJoin($previousJoin);
-        }
-
-        // add the ModelJoin to the current object
-        if($relationAlias) {
-            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
-            $this->addJoinObject($join, $relationAlias);
-        } else {
-            $this->addJoinObject($join, 'ActorRelatedById');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Use the ActorRelatedById relation Actor object
-     *
-     * @see       useQuery()
-     *
-     * @param     string $relationAlias optional alias for the relation,
-     *                                   to be used as main alias in the secondary query
-     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
-     *
-     * @return    \Admingenerator\PropelDemoBundle\Model\ActorQuery A secondary query class using the current class as primary query
-     */
-    public function useActorRelatedByIdQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
-    {
-        return $this
-            ->joinActorRelatedById($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'ActorRelatedById', '\Admingenerator\PropelDemoBundle\Model\ActorQuery');
-    }
-
-    /**
-     * Filter the query by a related Movie object
-     *
-     * @param     Movie $movie  the related object to use as filter
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
-     *
-     * @return    ActorHasMovieQuery The current query, for fluid interface
-     */
-    public function filterByMovieRelatedById($movie, $comparison = null)
-    {
-        if ($movie instanceof Movie) {
-            return $this
-                ->addUsingAlias(ActorHasMoviePeer::MOVIE_ID, $movie->getId(), $comparison);
-        } elseif ($movie instanceof PropelCollection) {
-            return $this
-                ->useMovieRelatedByIdQuery()
-                ->filterByPrimaryKeys($movie->getPrimaryKeys())
-                ->endUse();
-        } else {
-            throw new PropelException('filterByMovieRelatedById() only accepts arguments of type Movie or PropelCollection');
-        }
-    }
-
-    /**
-     * Adds a JOIN clause to the query using the MovieRelatedById relation
-     *
-     * @param     string $relationAlias optional alias for the relation
-     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
-     *
-     * @return    ActorHasMovieQuery The current query, for fluid interface
-     */
-    public function joinMovieRelatedById($relationAlias = null, $joinType = Criteria::INNER_JOIN)
-    {
-        $tableMap = $this->getTableMap();
-        $relationMap = $tableMap->getRelation('MovieRelatedById');
-
-        // create a ModelJoin object for this join
-        $join = new ModelJoin();
-        $join->setJoinType($joinType);
-        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
-        if ($previousJoin = $this->getPreviousJoin()) {
-            $join->setPreviousJoin($previousJoin);
-        }
-
-        // add the ModelJoin to the current object
-        if($relationAlias) {
-            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
-            $this->addJoinObject($join, $relationAlias);
-        } else {
-            $this->addJoinObject($join, 'MovieRelatedById');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Use the MovieRelatedById relation Movie object
-     *
-     * @see       useQuery()
-     *
-     * @param     string $relationAlias optional alias for the relation,
-     *                                   to be used as main alias in the secondary query
-     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
-     *
-     * @return    \Admingenerator\PropelDemoBundle\Model\MovieQuery A secondary query class using the current class as primary query
-     */
-    public function useMovieRelatedByIdQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
-    {
-        return $this
-            ->joinMovieRelatedById($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'MovieRelatedById', '\Admingenerator\PropelDemoBundle\Model\MovieQuery');
+            ->joinMovie($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'Movie', '\Admingenerator\PropelDemoBundle\Model\MovieQuery');
     }
 
     /**
