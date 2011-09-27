@@ -16,7 +16,7 @@ params:
       addFormOptions:
         property: Name
     nbactors:
-      getter: ActorHasMovieRelatedById|length
+      getter: countActorHasMoviesRelatedByMovieId
     release_date:
       formType: birthday
       addFormOptions:
