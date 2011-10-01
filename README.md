@@ -8,7 +8,7 @@ https://github.com/cedriclombardot/AdmingeneratorGeneratorBundle
 Copy and configure your db connections in paramaters.ini
 
 ```
-cp app/config/parameters.ini.sample app/config/parameters.ini
+cp app/config/parameters.yml.sample app/config/parameters.yml
 ```
 
 Run in your schell the nexts commands lines
