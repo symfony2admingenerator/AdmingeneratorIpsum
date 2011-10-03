@@ -1,5 +1,5 @@
 AdmingeneratorDoctrineODMDemoActorBundle_admin_admingenerator_doctrine_odm_demo_actor_bundle:
-    resource: "@AdmingeneratorDoctrineODMDemoActorBundle/Controller/"
+    resource: "@AdmingeneratorDoctrineODMDemoBundle/Controller/Actor/"
     type:     admingenerator
     prefix:   /admin-demo-odm-actor
 
