@@ -2,7 +2,7 @@ generator: admingenerator.generator.doctrine_odm
 params:
   model: Admingenerator\DoctrineODMDemoBundle\Document\Actor
   namespace_prefix: Admingenerator
-  bundle_name: DoctrineODMDemoActorBundle
+  bundle_name: DoctrineODMDemoBundle
   fields: ~
 
 builders:
