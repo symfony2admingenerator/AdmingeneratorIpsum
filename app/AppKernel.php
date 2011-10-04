@@ -36,7 +36,6 @@ class AppKernel extends Kernel
             
             //Doctrine MONGO
             new Admingenerator\DoctrineODMDemoBundle\AdmingeneratorDoctrineODMDemoBundle(),
-            new Admingenerator\DoctrineODMDemoActorBundle\AdmingeneratorDoctrineODMDemoActorBundle(),
             
             //Propel
             new Propel\PropelBundle\PropelBundle(),

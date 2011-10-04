@@ -43,7 +43,7 @@ class AdminMenu
         $doctrine = $menu->addChild('Doctrine ODM', array('uri' => '#'));
         $doctrine->setLinkAttributes(array('class'=>'sub main'));
         $doctrine->addChild('Movies', array('route' => 'Admingenerator_DoctrineODMDemoBundle_list'));
-        $doctrine->addChild('Actors', array('route' => 'Admingenerator_DoctrineODMDemoActorBundle_list'));
+        $doctrine->addChild('Actors', array('route' => 'Admingenerator_DoctrineODMDemoBundle_Actor_list'));
         
         //Help
         $help = $menu->addChild('Overwrite this menu', array('uri' => '#'));
