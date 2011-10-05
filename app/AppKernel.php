@@ -20,27 +20,28 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
-            
+
             //Menu
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            
-            //Pager 
+
+            //Pager
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            
+
             //Generator
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
-            
+            new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
+
             //Doctrine
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Admingenerator\DemoBundle\AdmingeneratorDemoBundle(),
-            
+
             //Doctrine MONGO
             new Admingenerator\DoctrineODMDemoBundle\AdmingeneratorDoctrineODMDemoBundle(),
-            
+
             //Propel
             new Propel\PropelBundle\PropelBundle(),
             new Admingenerator\PropelDemoBundle\AdmingeneratorPropelDemoBundle(),
-            
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
