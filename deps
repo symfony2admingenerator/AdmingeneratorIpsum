@@ -11,15 +11,15 @@
 
 [doctrine-common]
     git=git://github.com/doctrine/common.git
-    version=origin/2.1.x
+    version=origin/master
 
 [doctrine-dbal]
     git=git://github.com/doctrine/dbal.git
-    version=origin/2.1.x
+    version=origin/master
 
 [doctrine]
     git=git://github.com/doctrine/doctrine2.git
-    version=origin/2.1.x
+    version=origin/master
 
 [DoctrineMongoDBBundle]
     git=git://github.com/symfony/DoctrineMongoDBBundle.git
