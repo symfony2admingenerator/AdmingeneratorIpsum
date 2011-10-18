@@ -17,24 +17,23 @@ class Movie
     protected $id;
 
     /**
-     * @ORM\Column(length="255")
-     * @ORM\Index
+     * @ORM\Column(type="string", length=255)
      */
     protected $title;
-    
+
     /**
-     * @ORM\Column(type="boolean", nullable="true")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_published;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Admingenerator\DemoBundle\Entity\Producer", cascade={"all"}, fetch="EAGER")
      * @ORM\JoinColumn(name="producer_id", referencedColumnName="id")
      */
     protected $producer;
-    
+
     /**
-     * @ORM\Column(type="date", nullable="true")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $release_date;
 
@@ -42,21 +41,21 @@ class Movie
      * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies")
      */
     protected $actors;
-    
+
     public function __construct()
     {
         $this->actors = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function setActors(\Doctrine\Common\Collections\ArrayCollection $actors)
     {
          $this->actors = $actors;
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,7 +75,7 @@ class Movie
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -96,7 +95,7 @@ class Movie
     /**
      * Get is_published
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPublished()
     {
@@ -116,7 +115,7 @@ class Movie
     /**
      * Get producer
      *
-     * @return Admingenerator\DemoBundle\Entity\Producer 
+     * @return Admingenerator\DemoBundle\Entity\Producer
      */
     public function getProducer()
     {
@@ -136,7 +135,7 @@ class Movie
     /**
      * Get actors
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getActors()
     {
@@ -156,7 +155,7 @@ class Movie
     /**
      * Get release_date
      *
-     * @return date 
+     * @return date
      */
     public function getReleaseDate()
     {

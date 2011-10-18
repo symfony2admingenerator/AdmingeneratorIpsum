@@ -18,32 +18,31 @@ class Producer
     protected $id;
 
     /**
-     * @ORM\Column(length="255")
-     * @ORM\Index
+     * @ORM\Column(type="string", length=255)
      */
     protected $name;
-    
-    
+
+
     /**
-     * @ORM\Column(type="boolean", nullable="true")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $is_published;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Admingenerator\DemoBundle\Entity\Movie", mappedBy="producer", cascade={"all"}, orphanRemoval=true)
      */
     protected $movies;
-    
-    
+
+
     public function __construct()
     {
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -63,7 +62,7 @@ class Producer
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -83,7 +82,7 @@ class Producer
     /**
      * Get is_published
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPublished()
     {
@@ -103,7 +102,7 @@ class Producer
     /**
      * Get movies
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getMovies()
     {

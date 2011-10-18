@@ -17,11 +17,10 @@ class Actor
     protected $id;
 
     /**
-     * @ORM\Column(length="255")
-     * @ORM\Index
+     * @ORM\Column(type="string", length=255)
      */
     protected $name;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Movie", inversedBy="actors")
      * @ORM\JoinTable(name="actor_movies",
@@ -35,16 +34,16 @@ class Actor
     {
         return $this->name;
     }
-  
+
     public function __construct()
     {
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +63,7 @@ class Actor
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -84,7 +83,7 @@ class Actor
     /**
      * Get movies
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getMovies()
     {
