@@ -29,7 +29,7 @@ assetic:
     filters:
         cssrewrite: ~
         sass:
-            bin: /var/lib/gems/1.8/gems/sass-3.1.7/bin/sass
+            bin: /var/lib/gems/1.8/gems/sass-3.1.10/bin/sass
             compass: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
         # closure:
         #     jar: %kernel.root_dir%/java/compiler.jar
