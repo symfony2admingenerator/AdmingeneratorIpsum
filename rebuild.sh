@@ -15,3 +15,7 @@ php app/console doctrine:mongodb:fixtures:load
 php app/console propel:build
 php app/console propel:insert-sql --force
 php app/console propel:fixtures:load --dir=src/Admingenerator/PropelDemoBundle/Resources/fixtures
+
+# Create the demo user
+php app/console fos:user:create admin admin@demo.com admin
+php app/console fos:user:promote admin ROLE_ADMIN

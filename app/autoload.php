@@ -20,6 +20,7 @@ $loader->registerNamespaces(array(
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'WhiteOctober\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
     'Pagerfanta' => __DIR__.'/../vendor/pagerfanta/src',
+	'FOS'              => __DIR__.'/../vendor/bundles',
 
     //Admingenerator
     'Admingenerator'        => array(__DIR__.'/../src', __DIR__.'/../vendor/bundles'),

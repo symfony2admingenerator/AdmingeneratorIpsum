@@ -103,5 +103,14 @@ admingenerator_generator:
     use_doctrine_orm: true
     use_doctrine_odm: true
     use_propel: true
+    
+fos_user:
+    service:
+        mailer: fos_user.mailer.noop
+    user_class: FOS\UserBundle\Propel\User
+    db_driver: propel
+    firewall_name: main
+    group:
+        group_class: FOS\UserBundle\Propel\Group 
 
 

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
 
             //Menu
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -29,6 +30,7 @@ class AppKernel extends Kernel
 
             //Generator
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
+            new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
             new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
 
             //Doctrine

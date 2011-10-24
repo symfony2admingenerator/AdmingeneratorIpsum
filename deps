@@ -85,6 +85,11 @@
     target=/bundles/Admingenerator/GeneratorBundle
     version=origin/master
 
+[AdmingeneratorUserBundle]
+    git=git://github.com/cedriclombardot/AdmingeneratorUserBundle.git
+    target=/bundles/Admingenerator/UserBundle
+    version=origin/master
+
 [AdmingeneratorActiveAdminThemeBundle]
     git=git://github.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle.git
     target=/bundles/Admingenerator/ActiveAdminThemeBundle
@@ -137,3 +142,8 @@
 [propel]
     git=git://github.com/propelorm/Propel.git
     target=/propel
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=/bundles/FOS/UserBundle
+    version=origin/master
