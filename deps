@@ -83,10 +83,12 @@
 [Admingenerator]
     git=git://github.com/cedriclombardot/AdmingeneratorGeneratorBundle.git
     target=/bundles/Admingenerator/GeneratorBundle
+    version=origin/master
 
 [AdmingeneratorActiveAdminThemeBundle]
     git=git://github.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle.git
     target=/bundles/Admingenerator/ActiveAdminThemeBundle
+    version=origin/master
 
 [Pagerfanta]
     git=git://github.com/whiteoctober/Pagerfanta.git
