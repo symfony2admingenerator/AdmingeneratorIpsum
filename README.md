@@ -17,6 +17,9 @@ Run in your schell the nexts commands lines
 ./bin/vendors install
 ./rebuild.sh
 ```
+
+Note:  The default login/password is admin/admin
+
 # Optionnal dependencies
 
 ##  Assetic
