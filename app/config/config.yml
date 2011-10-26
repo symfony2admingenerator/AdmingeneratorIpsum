@@ -67,8 +67,9 @@ doctrine_mongodb:
     document_managers:
         default:
             metadata_cache_driver: apc
-            mappings: ~
-            auto_mapping: true
+            mappings:
+                AdmingeneratorDoctrineODMDemoBundle: ~
+            auto_mapping: false
 
 # Propel
 propel:
@@ -103,7 +104,7 @@ admingenerator_generator:
     use_doctrine_orm: true
     use_doctrine_odm: true
     use_propel: true
-    
+
 fos_user:
     service:
         mailer: fos_user.mailer.noop
@@ -111,6 +112,6 @@ fos_user:
     db_driver: propel
     firewall_name: main
     group:
-        group_class: FOS\UserBundle\Propel\Group 
+        group_class: FOS\UserBundle\Propel\Group
 
 
