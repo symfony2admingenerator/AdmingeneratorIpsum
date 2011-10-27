@@ -1,4 +1,4 @@
-# AdmingeneratorIpsum
+# AdmingeneratorIpsum ![project status](http://stillmaintained.com/cedriclombardot/AdmingeneratorIpsum.png)#
 
 This is a symfony2 project to show you how work the Symfony2 admingenerator
 https://github.com/cedriclombardot/AdmingeneratorGeneratorBundle
