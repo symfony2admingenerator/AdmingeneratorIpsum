@@ -7,7 +7,7 @@
 
 [monolog]
     git=git://github.com/Seldaek/monolog.git
-    version=1.0.1
+    version=1.0.2
 
 [doctrine-common]
     git=git://github.com/doctrine/common.git
