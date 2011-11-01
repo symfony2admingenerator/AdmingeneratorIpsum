@@ -38,6 +38,11 @@ class Movie
     protected $release_date;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $created_at; // to test a datetime, it's not a behavior !!
+
+    /**
      * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies")
      */
     protected $actors;
@@ -160,5 +165,37 @@ class Movie
     public function getReleaseDate()
     {
         return $this->release_date;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param datetime $createdAt
+     * @return Movie
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return datetime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Add actors
+     *
+     * @param Admingenerator\DemoBundle\Entity\Actor $actors
+     */
+    public function addActor(\Admingenerator\DemoBundle\Entity\Actor $actors)
+    {
+        $this->actors[] = $actors;
     }
 }

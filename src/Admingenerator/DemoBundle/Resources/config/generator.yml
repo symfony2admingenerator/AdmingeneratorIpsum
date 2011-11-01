@@ -44,7 +44,7 @@ builders:
           "Without actos":
              filters: [ withoutActors ]
       title: Here is a beautifull title no  ???
-      display: [ id, title, is_published, producer, release_date ]
+      display: [ id, title, is_published, producer, release_date, created_at ]
       max_per_page: 3
       sort: [ producer.name, DESC ]
       actions:
@@ -58,19 +58,19 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, producer, actors, release_date]
+      display: [ title, is_published, producer, actors, release_date, created_at ]
 
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, producer, actors, release_date ]
+      display: [ title, is_published, producer, actors, release_date, created_at ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
       display:
-        "NONE": [ title, release_date ]
+        "NONE": [ title, release_date, created_at ]
         "Other informations": [[ is_published ], [producer, actors ]]
       actions:
         list: ~

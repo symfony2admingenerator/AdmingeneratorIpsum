@@ -89,4 +89,14 @@ class Actor
     {
         return $this->movies;
     }
+
+    /**
+     * Add movies
+     *
+     * @param Admingenerator\DemoBundle\Entity\Movie $movies
+     */
+    public function addMovie(\Admingenerator\DemoBundle\Entity\Movie $movies)
+    {
+        $this->movies[] = $movies;
+    }
 }
