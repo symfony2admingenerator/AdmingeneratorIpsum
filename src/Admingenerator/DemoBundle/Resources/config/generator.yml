@@ -69,6 +69,7 @@ builders:
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
+      credentials: "ROLE_ADMIN or (ROLE_USER and ROLE_EDIT)"
       display:
         "NONE": [ title, release_date, created_at ]
         "Other informations": [[ is_published ], [producer, actors ]]
