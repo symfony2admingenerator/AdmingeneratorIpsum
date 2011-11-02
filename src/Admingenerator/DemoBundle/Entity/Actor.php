@@ -22,10 +22,10 @@ class Actor
     protected $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Movie", inversedBy="actors")
+     * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Movie", inversedBy="actors", cascade="ALL")
      * @ORM\JoinTable(name="actor_movies",
-     *      joinColumns={@ORM\JoinColumn(name="actor_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="actor_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     protected $movies;

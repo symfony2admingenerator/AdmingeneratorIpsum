@@ -43,7 +43,7 @@ class Movie
     protected $created_at; // to test a datetime, it's not a behavior !!
 
     /**
-     * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies")
+     * @ORM\ManyToMany(targetEntity="Admingenerator\DemoBundle\Entity\Actor", inversedBy="movies", cascade="ALL")
      */
     protected $actors;
 
@@ -182,7 +182,7 @@ class Movie
     /**
      * Get created_at
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreatedAt()
     {
