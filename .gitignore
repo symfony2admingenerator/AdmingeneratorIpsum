@@ -3,3 +3,5 @@ vendor/*
 web/bundles*
 app/logs/*
 app/config/parameters.yml
+src/*/*Bundle/Model/om/*
+src/*/*Bundle/Model/map/*
