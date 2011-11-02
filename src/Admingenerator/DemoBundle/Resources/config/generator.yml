@@ -12,6 +12,7 @@ params:
       label: Producer name
       sort_on: producer.name
       getter: producer.name
+      credentials: "ROLE_ADMIN"
       addFormOptions:
         property: name
     release_date:

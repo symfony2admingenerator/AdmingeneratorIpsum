@@ -19,3 +19,4 @@ php app/console propel:fixtures:load --dir=src/Admingenerator/PropelDemoBundle/R
 # Create the demo user
 php app/console fos:user:create admin admin@demo.com admin
 php app/console fos:user:promote admin ROLE_ADMIN
+php app/console fos:user:create user user@demo.com user
