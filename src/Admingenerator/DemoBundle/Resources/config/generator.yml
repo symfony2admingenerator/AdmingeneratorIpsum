@@ -12,7 +12,7 @@ params:
       label: Producer name
       sort_on: producer.name
       getter: producer.name
-      credentials: "ROLE_ADMIN"
+      credentials: hasRole("ROLE_ADMIN")
       addFormOptions:
         property: name
     release_date:
@@ -70,7 +70,7 @@ builders:
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
-      credentials: "ROLE_ADMIN or (ROLE_USER and ROLE_EDIT)"
+      credentials: 'hasRole("ROLE_ADMIN") or (hasRole("ROLE_USER") and hasRole("ROLE_EDIT"))'
       display:
         "NONE": [ title, release_date, created_at ]
         "Other informations": [[ is_published ], [producer, actors ]]
