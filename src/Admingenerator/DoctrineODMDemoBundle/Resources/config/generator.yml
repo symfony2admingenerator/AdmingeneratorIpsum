@@ -63,14 +63,14 @@ builders:
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, actors, producer, release_date ]
+      display: [ title, is_published, actors, producer, release_date, hashField ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
-      display:
-        "NONE": [ title, release_date ]
+      display: 
+        "NONE": [ title, release_date, hashField ]
         "Other informations": [[ is_published ], [ producer, actors ]]
       actions:
         list: ~

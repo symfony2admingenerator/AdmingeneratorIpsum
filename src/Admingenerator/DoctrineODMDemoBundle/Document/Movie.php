@@ -17,17 +17,17 @@ class Movie
      * @MongoDB\Field(type="string")
      */
     protected $title;
-    
+
     /**
      * @MongoDB\Field(type="boolean", nullable="true")
      */
     protected $is_published;
-    
+
     /**
      * @MongoDB\ReferenceOne(targetDocument="Admingenerator\DoctrineODMDemoBundle\Document\Producer", cascade={"all"})
      */
     protected $producer;
-    
+
     /**
      * @MongoDB\Field(type="date", nullable="true")
      */
@@ -37,18 +37,23 @@ class Movie
      * @MongoDB\ReferenceMany(targetDocument="Admingenerator\DoctrineODMDemoBundle\Document\Actor", inversedBy="movies")
      */
     protected $actors;
-    
-   
+
+    /**
+     * @MongoDB\Field(type="hash")
+     */
+    protected $hashField;
+
+
     public function __construct()
     {
         $this->actors = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function setActors(\Doctrine\Common\Collections\ArrayCollection $actors)
     {
          $this->actors = $actors;
     }
-    
+
     /**
      * Get id
      *
@@ -157,5 +162,26 @@ class Movie
     public function getActors()
     {
         return $this->actors;
+    }
+
+
+    /**
+     * Set hashField
+     *
+     * @param hash $hashField
+     */
+    public function setHashField($hashField)
+    {
+        $this->hashField = $hashField;
+    }
+
+    /**
+     * Get hashField
+     *
+     * @return hash $hashField
+     */
+    public function getHashField()
+    {
+        return $this->hashField;
     }
 }
