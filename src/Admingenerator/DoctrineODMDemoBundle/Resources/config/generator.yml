@@ -58,7 +58,7 @@ builders:
       fields:
         release_date:
           formType: date_range
-      display: [ title, is_published, actors, producer, release_date]
+      display: [ title, is_published, actors, producer, release_date, hashField]
 
   new:
     params:
