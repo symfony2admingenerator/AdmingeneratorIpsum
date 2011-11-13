@@ -147,3 +147,7 @@
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=/bundles/FOS/UserBundle
     version=origin/master
+
+[TwigGenerator]
+    git=git://github.com/cedriclombardot/TwigGenerator.git
+    target=/twig-generator

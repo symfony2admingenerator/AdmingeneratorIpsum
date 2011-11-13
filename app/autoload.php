@@ -23,6 +23,7 @@ $loader->registerNamespaces(array(
 	'FOS'              => __DIR__.'/../vendor/bundles',
 
     //Admingenerator
+    'TwigGenerator'         => __DIR__.'/../vendor/twig-generator/src',
     'Admingenerator'        => array(__DIR__.'/../src', __DIR__.'/../vendor/bundles'),
 
     //Behat
