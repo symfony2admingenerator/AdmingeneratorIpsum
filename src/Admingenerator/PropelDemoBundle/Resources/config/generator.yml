@@ -27,7 +27,7 @@ params:
         format: "Y-m-d"
         years:
           .range:
-            from: <?php echo date("Y"); ?>
+            from: 2011
 
             to: 1950
             step: 1
@@ -75,6 +75,9 @@ builders:
   edit:
     params:
       title: You're editing the movie "{{ Movie.title }}"
+      messages:
+        success: "Your movie is well updated"
+        error: "Oops, an error occurred, and we can save this movie."
       fields:
         actors:
           formType: collection
