@@ -110,9 +110,11 @@ fos_user:
     service:
         mailer: fos_user.mailer.noop
     user_class: FOS\UserBundle\Propel\User
+    propel_user_class: FOS\UserBundle\Propel\User
     db_driver: propel
     firewall_name: main
     group:
         group_class: FOS\UserBundle\Propel\Group
+        propel_group_class: FOS\UserBundle\Propel\Group
 
 
