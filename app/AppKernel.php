@@ -14,8 +14,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             // new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
@@ -34,7 +34,7 @@ class AppKernel extends Kernel
             new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
 
             //Doctrine
-            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Admingenerator\DemoBundle\AdmingeneratorDemoBundle(),
 
             //Doctrine MONGO
@@ -43,7 +43,6 @@ class AppKernel extends Kernel
             //Propel
             new Propel\PropelBundle\PropelBundle(),
             new Admingenerator\PropelDemoBundle\AdmingeneratorPropelDemoBundle(),
-
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

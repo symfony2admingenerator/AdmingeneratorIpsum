@@ -1,4 +1,6 @@
-security:                                                                                                                                                                                                                                    
+security:  
+    encoders:
+        "FOS\UserBundle\Model\UserInterface": sha512                                                                                                                                                                                                                                  
     providers:
         fos_userbundle:
             id: fos_user.user_manager

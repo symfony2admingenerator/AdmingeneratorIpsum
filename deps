@@ -3,7 +3,7 @@
 
 [twig]
     git=git://github.com/fabpot/Twig.git
-    version=v1.2.0
+    version=origin/master
 
 [monolog]
     git=git://github.com/Seldaek/monolog.git
@@ -22,8 +22,8 @@
     version=origin/master
 
 [DoctrineMongoDBBundle]
-    git=git://github.com/symfony/DoctrineMongoDBBundle.git
-    target=/bundles/Symfony/Bundle/DoctrineMongoDBBundle
+    git=git://github.com/doctrine/DoctrineMongoDBBundle.git
+    target=/bundles/Doctrine/Bundle/MongoDBBundle
 
 [doctrine-mongodb-odm]
     git=git://github.com/doctrine/mongodb-odm.git
@@ -35,8 +35,8 @@
     git=git://github.com/doctrine/data-fixtures.git
 
 [DoctrineFixturesBundle]
-    git=git://github.com/symfony/DoctrineFixturesBundle.git
-    target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+    git=git://github.com/doctrine/DoctrineFixturesBundle.git
+    target=/bundles/Doctrine/Bundle/FixturesBundle
 
 [swiftmailer]
     git=git://github.com/swiftmailer/swiftmailer.git
@@ -143,6 +143,10 @@
     git=git://github.com/propelorm/Propel.git
     target=/propel
 
+[TypehintableBehavior]
+    git=git://github.com/willdurand/TypehintableBehavior.git
+    target=/propel-behaviors/TypehintableBehavior
+
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=/bundles/FOS/UserBundle
@@ -151,3 +155,11 @@
 [TwigGenerator]
     git=git://github.com/cedriclombardot/TwigGenerator.git
     target=/twig-generator
+
+
+[DoctrineBundle]
+    git=http://github.com/doctrine/DoctrineBundle.git
+    target=/bundles/Doctrine/Bundle/DoctrineBundle
+    version=origin/master
+
+ 
