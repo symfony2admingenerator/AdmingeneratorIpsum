@@ -7,12 +7,9 @@ params:
     ActorRelatedByActorId:
       label: Actors
       filterOn: ActorHasMovieRelatedById.ActorId
-    ActorHasMovies:
+    actors:
       dbType: collection
       form_type: propel_double_list
-      addFormOptions:
-        class: \Admingenerator\PropelDemoBundle\Model\Actor
-
     is_published:
       help: If you want to see this content on you website
     producer:
@@ -69,7 +66,7 @@ builders:
   new:
     params:
       title: You're creating a new movie
-      display: [ title, is_published, release_date, producer, ActorHasMovies ]
+      display: [ title, is_published, release_date, producer, actors ]
       actions:
         list: ~
   edit:
