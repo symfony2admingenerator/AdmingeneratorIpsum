@@ -11,9 +11,11 @@ use Admingenerator\DemoBundle\Entity\Producer;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Admingenerator\DemoBundle\Entity\Movie;
 
+use Doctrine\Common\Persistence\ObjectManager;
+
 class LoadMovieData implements FixtureInterface
 {
-    public function load($manager)
+    public function load(ObjectManager $manager)
     {
         $movies = array(
             //Title, Year, Release date, Producer
