@@ -29,11 +29,11 @@ assetic:
     filters:
         cssrewrite: ~
         compass:
-            sass: /var/lib/gems/1.8/gems/sass-3.1.10/bin/sass
-            bin: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
+            sass: /var/lib/gems/1.8/gems/sass-3.1.15/bin/sass
+            bin: /var/lib/gems/1.8/gems/compass-0.11.7/bin/compass
         sass:
-            bin: /var/lib/gems/1.8/gems/sass-3.1.10/bin/sass
-            compass: /var/lib/gems/1.8/gems/compass-0.11.5/bin/compass
+            bin: /var/lib/gems/1.8/gems/sass-3.1.15/bin/sass
+            compass: /var/lib/gems/1.8/gems/compass-0.11.7/bin/compass
         # closure:
         #     jar: %kernel.root_dir%/java/compiler.jar
         # yui_css:
