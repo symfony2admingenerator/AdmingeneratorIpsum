@@ -27,7 +27,7 @@ class AdminMenu
 
         $menu->setCurrentUri($request->getRequestUri());
         
-        $menu->setAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
+        $menu->setchildrenAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
 
         //Propel demos
         $propel = $menu->addChild('Propel', array('uri' => '#'));
