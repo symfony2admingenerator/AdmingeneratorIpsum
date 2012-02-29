@@ -73,7 +73,7 @@ doctrine_mongodb:
 
 # Propel
 propel:
-    path:       "%kernel.root_dir%/../vendor/propel"
+    path:       "%kernel.root_dir%/../vendor/propel/propel1"
     phing_path: "%kernel.root_dir%/../vendor/phing"
     dbal:
         driver:               mysql
@@ -109,7 +109,7 @@ admingenerator_generator:
 fos_user:
     service:
         mailer: fos_user.mailer.noop
-    user_class:  FOS\UserBundle\Propel\UserProxy 
+    user_class:  FOS\UserBundle\Propel\UserProxy
     propel_user_class: FOS\UserBundle\Propel\User
     db_driver: propel
     firewall_name: main
