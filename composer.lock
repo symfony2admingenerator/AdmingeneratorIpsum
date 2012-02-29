@@ -9,7 +9,7 @@
         {
             "package": "cedriclombardot/admingenerator-activeadmintheme-bundle",
             "version": "dev-master",
-            "source-reference": "7883ac8f9f6555aa5ab35ea117106a0e6a4a8ae5"
+            "source-reference": "4fedc132254cb934dac3ac857a379eb3794b0cf9"
         },
         {
             "package": "cedriclombardot/admingenerator-generator-bundle",
@@ -103,7 +103,7 @@
         {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
-            "source-reference": "58e9c45aa27be35d16add0394e1e254b82f3f914"
+            "source-reference": "7edbf01136dbbe1ff95bca4c007bb8cf1271c72e"
         },
         {
             "package": "monolog/monolog",
@@ -122,7 +122,7 @@
         {
             "package": "propel/propel-bundle",
             "version": "dev-master",
-            "source-reference": "566472cc9bb5fe4e6fd58ee1d36275584b9744ab"
+            "source-reference": "5552ebd96f0adcbb8c3bf65a886693c9ec656789"
         },
         {
             "package": "propel/propel1",
