@@ -8,12 +8,13 @@ use Symfony\Component\Form\Extension\Core\Type\RadioType;
 
 use Admingenerator\DoctrineODMDemoBundle\Document\Producer;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Admingenerator\DoctrineODMDemoBundle\Document\Movie;
 
 class LoadMovieData implements FixtureInterface
 {
-    public function load($manager)
+    public function load(ObjectManager $manager)
     {
         $movies = array(
             //Title, Year, Release date, Producer
