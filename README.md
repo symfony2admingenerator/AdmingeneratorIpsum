@@ -14,7 +14,8 @@ cp app/config/parameters.yml.sample app/config/parameters.yml
 Run in your schell the nexts commands lines
 
 ```
-./bin/vendors install
+wget http://getcomposer.org/composer.phar
+php composer.phar install
 ./rebuild.sh
 ```
 

@@ -5,3 +5,6 @@ app/logs/*
 app/config/parameters.yml
 src/*/*Bundle/Model/om/*
 src/*/*Bundle/Model/map/*
+app/bootstrap.php.cache
+composer.phar
+.project
