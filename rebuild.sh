@@ -20,3 +20,6 @@ php app/console propel:fixtures:load --dir=src/Admingenerator/PropelDemoBundle/R
 php app/console fos:user:create admin admin@demo.com admin
 php app/console fos:user:promote admin ROLE_ADMIN
 php app/console fos:user:create user user@demo.com user
+
+# Init acl
+php app/console init:acl
