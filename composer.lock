@@ -1,5 +1,5 @@
 {
-    "hash": "73c823f96a89c1393c3b0b377b283645",
+    "hash": "9edd07045c56c7f40d12073365387609",
     "packages": [
         {
             "package": "TypehintableBehavior",
@@ -14,7 +14,7 @@
         {
             "package": "cedriclombardot/admingenerator-generator-bundle",
             "version": "dev-master",
-            "source-reference": "c916a38266ba782c8a7de421ac2c343f989f167b"
+            "source-reference": "46102706de6eca5df709cd561cbfee892a37aaaf"
         },
         {
             "package": "cedriclombardot/admingenerator-user-bundle",
@@ -24,16 +24,16 @@
         {
             "package": "cedriclombardot/twig-generator",
             "version": "dev-master",
-            "source-reference": "9eb0d3f1897e45a5f6cdb519dcc1855803bb72bd"
+            "source-reference": "d7c6d11244627bba334ad77f18e4fe894a5293ed"
         },
         {
             "package": "doctrine/common",
-            "version": "2.2.0"
+            "version": "2.2.1"
         },
         {
             "package": "doctrine/data-fixtures",
             "version": "dev-master",
-            "source-reference": "ffee818a6e3af526b774de11b690a36512fa6235"
+            "source-reference": "aea0b95a554188892f10d8f09ce3ae8150f28f8b"
         },
         {
             "package": "doctrine/dbal",
@@ -42,7 +42,7 @@
         {
             "package": "doctrine/doctrine-bundle",
             "version": "dev-master",
-            "source-reference": "caecd032878c45c05a962d6ddfac4f45a7a39fb1"
+            "source-reference": "08f1764e860b684d7574448a6840b08804a516d9"
         },
         {
             "package": "doctrine/doctrine-fixtures-bundle",
@@ -52,17 +52,17 @@
         {
             "package": "doctrine/mongodb",
             "version": "dev-master",
-            "source-reference": "d7fdcff25b9534e67abbd557bf75250cbef62b31"
+            "source-reference": "727a12d25ba12d18aa293bc6eb61f203a9545912"
         },
         {
             "package": "doctrine/mongodb-odm",
             "version": "dev-master",
-            "source-reference": "57e7b2d247bdd12ff25307840951313f9fe15e41"
+            "source-reference": "bba938ee566f9942bb0adf6fb07f77e94671df2b"
         },
         {
             "package": "doctrine/mongodb-odm-bundle",
             "version": "dev-master",
-            "source-reference": "027379a8e2ed24b81a234590b91d572565eaeba1"
+            "source-reference": "61f34e19bb3412372a09a0b214436d91232b447f"
         },
         {
             "package": "doctrine/orm",
@@ -71,7 +71,7 @@
         {
             "package": "friendsofsymfony/user-bundle",
             "version": "dev-master",
-            "source-reference": "a0e50724825fd73531a563f514168d8536b9187e"
+            "source-reference": "342f78a6f973a646642960ad800726b499577e26"
         },
         {
             "package": "jms/aop-bundle",
@@ -88,22 +88,22 @@
         {
             "package": "jms/security-extra-bundle",
             "version": "dev-master",
-            "source-reference": "e43b9a5b5456bb8dd5b07bed7f776a7c233e2091"
+            "source-reference": "a636402a8cb1893202f6f67231923cd36ef96e60"
         },
         {
             "package": "knplabs/knp-menu",
             "version": "dev-master",
-            "source-reference": "f818c58d89885c5eb1e305f5b7360588fd49fbab"
+            "source-reference": "f7970583d4da8776c037e2d49878d8160361e373"
         },
         {
             "package": "knplabs/knp-menu-bundle",
             "version": "dev-master",
-            "source-reference": "462b7b40e5c17813a6d14929d7bca7d0511c7736"
+            "source-reference": "c20933d2b988a3bd0944a0fd9e00068c30f0d27f"
         },
         {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
-            "source-reference": "7edbf01136dbbe1ff95bca4c007bb8cf1271c72e"
+            "source-reference": "2634d29cc193981761e3daf28e1afc6358bb43b1"
         },
         {
             "package": "monolog/monolog",
@@ -122,36 +122,36 @@
         {
             "package": "propel/propel-bundle",
             "version": "dev-master",
-            "source-reference": "5552ebd96f0adcbb8c3bf65a886693c9ec656789"
+            "source-reference": "e15eccc0cded18133cb4e2162eb3623300fea43b"
         },
         {
             "package": "propel/propel1",
             "version": "dev-master",
-            "source-reference": "9d0251f852b0941024a8998edc019602bc3a83fe"
+            "source-reference": "89d686ed21eede552e5a6d3ceb45813bb3dd24ea"
         },
         {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
-            "source-reference": "12882a093af81f89ac13078904e81c308784e883"
+            "source-reference": "e78f65f36b27ba07b1e44241b4cf5443e80d7bd5"
         },
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "source-reference": "1b0ca00361050760f14f70be6f3a31f125211f3d"
+            "source-reference": "7e1e52a241558264253179bb790f4c5d25544fb4"
         },
         {
             "package": "sensio/generator-bundle",
             "version": "dev-master",
-            "source-reference": "fe924497677ea41d0d09f0c011e55142bda12cd7"
+            "source-reference": "3d16db1631a3648d1b6662efe6de32735118b1da"
         },
         {
             "package": "swiftmailer/swiftmailer",
-            "version": "4.1.5"
+            "version": "4.1.6"
         },
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "source-reference": "da4a46ce37557dcf3068b8493b12bdbbe47455e2"
+            "source-reference": "b9cff021abc3d9433a892fa9908d9856393c0d09"
         },
         {
             "package": "symfony/monolog-bundle",
@@ -171,8 +171,7 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "3de31c62d6d695477803d797177fbfe2a2fa3ef5",
-            "alias": "2.1.9999999.9999999-dev"
+            "source-reference": "3e9512643704cda42934e27b9c1f82631f45ebba"
         },
         {
             "package": "twig/extensions",
@@ -181,7 +180,7 @@
         },
         {
             "package": "twig/twig",
-            "version": "1.6.0"
+            "version": "1.6.3"
         },
         {
             "package": "white-october/pagerfanta-bundle",
