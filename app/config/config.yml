@@ -74,7 +74,7 @@ doctrine_mongodb:
 # Propel
 propel:
     path:       "%kernel.root_dir%/../vendor/propel/propel1"
-    phing_path: "%kernel.root_dir%/../vendor/phing"
+    phing_path: "%kernel.root_dir%/../vendor/pear-phing"
     dbal:
         driver:               mysql
         user:                 %database_user%
