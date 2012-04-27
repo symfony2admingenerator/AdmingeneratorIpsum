@@ -13,7 +13,7 @@ php app/console doctrine:mongodb:fixtures:load
 
 # Rebuild propel
 php app/console propel:build
-php app/console propel:insert-sql --force
+php app/console propel:sql:insert --force
 php app/console propel:fixtures:load --dir=src/Admingenerator/PropelDemoBundle/Resources/fixtures
 
 # Create the demo user
