@@ -91,11 +91,6 @@
             "source-reference": "b564463433aed66e9dddad8cbb761afff5a80cb4"
         },
         {
-            "package": "knplabs/knp-menu",
-            "version": "dev-master",
-            "source-reference": "d7a5eafa6711351b5989bd86bfa74d058e6a55ec"
-        },
-        {
             "package": "knplabs/knp-menu-bundle",
             "version": "dev-master",
             "source-reference": "c20933d2b988a3bd0944a0fd9e00068c30f0d27f"
