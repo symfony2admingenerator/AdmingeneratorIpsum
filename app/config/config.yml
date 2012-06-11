@@ -103,7 +103,7 @@ jms_security_extra:
 knp_menu:
     twig: true
 admingenerator_generator:
-    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin.html.twig
+    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin_assetic_less.html.twig
     knp_menu_class: Admingenerator\DemoBundle\Menu\AdminMenu
     use_doctrine_orm: true
     use_doctrine_odm: true

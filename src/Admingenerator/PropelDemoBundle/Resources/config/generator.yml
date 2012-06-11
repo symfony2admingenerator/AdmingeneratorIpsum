@@ -33,29 +33,31 @@ builders:
   list:
     params:
       scopes:
-        group_1: 
+        group_1:
           All: ~
-          Published: 
+          Published:
             default: true
-            filters: 
+            filters:
               filterByIsPublished: true
-          "Not Published": 
-            filters: 
+          "Not Published":
+            filters:
               filterByIsPublished: false
         group_2:
           "With actors":
              filters: [ withActors ]
           "Without actos":
              filters: [ withoutActors ]
-         
+
       title: Here is a beautifull title no  ???
       display: [ id, title, is_published, release_date, producer ]
       max_per_page: 3
       actions:
         new: ~
+      batch_actions:
+        delete: ~
       object_actions:
         edit: ~
-        delete: 
+        delete:
           confirm: Are you sure to delete {{ Movie.title }} ?
   filters:
     params:
@@ -77,7 +79,7 @@ builders:
         error: "Oops, an error occurred, and we can save this movie."
       fields:
         actors:
-          formType: collection
+           formType: collection
           dbType: collection
           addFormOptions:
             type: \Admingenerator\PropelDemoBundle\Form\Type\ActorType

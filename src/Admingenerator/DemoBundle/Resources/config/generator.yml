@@ -30,14 +30,14 @@ builders:
   list:
     params:
       scopes:
-        group_1: 
+        group_1:
           All: ~
-          Published: 
+          Published:
             default: true
-            filters: 
+            filters:
               is_published: true
-          "Not Published": 
-            filters: 
+          "Not Published":
+            filters:
               is_published: false
         group_2:
           "With actors":
@@ -50,9 +50,11 @@ builders:
       sort: [ producer.name, DESC ]
       actions:
         new: ~
+      batch_actions:
+        delete: ~
       object_actions:
         edit: ~
-        delete: 
+        delete:
           confirm: Are you sure to delete {{ Movie.title }} ?
   filters:
     params:
