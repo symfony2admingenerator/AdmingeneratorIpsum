@@ -26,8 +26,6 @@ class AdminMenu extends ContainerAware
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->setCurrentUri($request->getRequestUri());
-
         $menu->setchildrenAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
 
         //Propel demos
