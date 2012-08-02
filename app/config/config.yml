@@ -6,7 +6,6 @@ framework:
     #esi:             ~
     translator:      { fallback: en }
     secret:          %secret%
-    charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
@@ -14,8 +13,7 @@ framework:
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
 
     default_locale: %locale%
-    session:
-        auto_start:     true
+    session:         ~
 
 # Twig Configuration
 twig:
@@ -112,7 +110,6 @@ admingenerator_generator:
 fos_user:
     service:
         mailer: fos_user.mailer.noop
-    user_class:  FOS\UserBundle\Propel\UserProxy
-    propel_user_class: FOS\UserBundle\Propel\User
+    user_class:  FOS\UserBundle\Propel\User
     db_driver: propel
     firewall_name: main
