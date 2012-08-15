@@ -16,8 +16,8 @@
         {
             "package": "cedriclombardot/admingenerator-generator-bundle",
             "version": "dev-master",
-            "source-reference": "c7568d94002fbf57345b77dbadc2d281f899a146",
-            "commit-date": "1344844870"
+            "source-reference": "61937b31a9daac5dd6b29bbde16a00bacd597486",
+            "commit-date": "1345019824"
         },
         {
             "package": "cedriclombardot/admingenerator-user-bundle",
