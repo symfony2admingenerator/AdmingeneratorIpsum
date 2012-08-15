@@ -22,5 +22,7 @@ monolog:
 assetic:
     use_controller: true
 
-admingenerator_generator:
-    overwrite_if_exists: true
+# Force rebuild each time : usefull to create template
+# by default the admin will be rebuild when generator.yml is updated
+#admingenerator_generator:
+#    overwrite_if_exists: true
