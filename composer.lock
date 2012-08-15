@@ -16,14 +16,20 @@
         {
             "package": "cedriclombardot/admingenerator-generator-bundle",
             "version": "dev-master",
-            "source-reference": "61937b31a9daac5dd6b29bbde16a00bacd597486",
-            "commit-date": "1345019824"
+            "source-reference": "ed285e00e68edaea7d48c73b292314ae8d75bb9e",
+            "commit-date": "1345045758"
+        },
+        {
+            "package": "cedriclombardot/admingenerator-oldtheme-bundle",
+            "version": "dev-master",
+            "source-reference": "4280ad9fc17fff2334e1ca8ccdb52ee8cfb95b5d",
+            "commit-date": "1345044142"
         },
         {
             "package": "cedriclombardot/admingenerator-user-bundle",
             "version": "dev-master",
-            "source-reference": "affe3d5af951c7511fe560451d4f62bdcc0c10ed",
-            "commit-date": "1343746788"
+            "source-reference": "efd2e064f062b63d464a9dd953485ecd5e6cff14",
+            "commit-date": "1345044910"
         },
         {
             "package": "cedriclombardot/twig-generator",
@@ -90,12 +96,6 @@
         {
             "package": "doctrine/mongodb-odm-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "3.0.x-dev",
-            "alias-version": "3.0.9999999.9999999-dev"
-        },
-        {
-            "package": "doctrine/mongodb-odm-bundle",
-            "version": "dev-master",
             "source-reference": "87000bfd60be8ced415975f644b03c26f3ce3e7d",
             "commit-date": "1344871060"
         },
@@ -132,12 +132,6 @@
         {
             "package": "jms/metadata",
             "version": "1.1.1"
-        },
-        {
-            "package": "jms/security-extra-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "1.2.x-dev",
-            "alias-version": "1.2.9999999.9999999-dev"
         },
         {
             "package": "jms/security-extra-bundle",
@@ -216,32 +210,14 @@
         {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "sensio/distribution-bundle",
-            "version": "dev-master",
             "source-reference": "e5e3e4758bfe4dd5fab74bccf9418888d1492691",
             "commit-date": "1344928161"
         },
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "sensio/framework-extra-bundle",
-            "version": "dev-master",
             "source-reference": "ade2d53b20a9fc3428f04c863b3fd4fca0b62181",
             "commit-date": "1344072374"
-        },
-        {
-            "package": "sensio/generator-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "sensio/generator-bundle",
@@ -264,32 +240,14 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/assetic-bundle",
-            "version": "dev-master",
             "source-reference": "ec3a65d3eab342af9e93a3c21af0ac7b78e01c17",
             "commit-date": "1344507386"
         },
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/monolog-bundle",
-            "version": "dev-master",
             "source-reference": "aed4d742838d2a7350633fed7afe18dbfd3415de",
             "commit-date": "1344949802"
-        },
-        {
-            "package": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/swiftmailer-bundle",

@@ -106,6 +106,7 @@ admingenerator_generator:
     use_doctrine_orm: true
     use_doctrine_odm: true
     use_propel: true
+    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
 
 fos_user:
     service:

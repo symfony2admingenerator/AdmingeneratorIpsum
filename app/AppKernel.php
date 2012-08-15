@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             //Generator
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
             new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
+            new Admingenerator\OldThemeBundle\AdmingeneratorOldThemeBundle(),
             new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
 
             //Doctrine
