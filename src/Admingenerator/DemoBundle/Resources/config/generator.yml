@@ -18,10 +18,10 @@ params:
     release_date:
       formType: birthday
       addFormOptions:
-        format: "Y-m-d"
+        format: "y-M-d"
         years:
           .range:
-            from: <?php echo date("Y"); ?>
+            from: <?php echo date("y"); ?>
 
             to: 1950
             step: 1
