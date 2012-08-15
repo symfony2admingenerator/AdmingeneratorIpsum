@@ -21,7 +21,7 @@ params:
     release_date:
       formType: birthday
       addFormOptions:
-        format: "Y-m-d"
+        format: "y-M-d"
         years:
           .range:
             from: 2011
@@ -79,7 +79,7 @@ builders:
         error: "Oops, an error occurred, and we can save this movie."
       fields:
         actors:
-           formType: collection
+          formType: collection
           dbType: collection
           addFormOptions:
             type: \Admingenerator\PropelDemoBundle\Form\Type\ActorType
