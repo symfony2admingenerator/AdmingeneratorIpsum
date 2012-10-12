@@ -8,19 +8,19 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony2admingenerator/AdmingeneratorActiveAdminThemeBundle.git",
-                "reference": "eb66bdaa52ccd55ef34df6eb3ad33604495f67db"
+                "reference": "ae4f837600734b837a1104ec2d29aca82f0186e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony2admingenerator/AdmingeneratorActiveAdminThemeBundle/zipball/eb66bdaa52ccd55ef34df6eb3ad33604495f67db",
-                "reference": "eb66bdaa52ccd55ef34df6eb3ad33604495f67db",
+                "url": "https://github.com/symfony2admingenerator/AdmingeneratorActiveAdminThemeBundle/zipball/ae4f837600734b837a1104ec2d29aca82f0186e9",
+                "reference": "ae4f837600734b837a1104ec2d29aca82f0186e9",
                 "shasum": ""
             },
             "require": {
                 "cedriclombardot/admingenerator-generator-bundle": "*",
                 "cedriclombardot/admingenerator-oldtheme-bundle": "*"
             },
-            "time": "1345046674",
+            "time": "1350065774",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -47,12 +47,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle.git",
-                "reference": "e8ac2745616eada0905714455772979306012ba1"
+                "reference": "f6ae7a808aa59f8f0bbd5b4e83e7a14bc5ec6310"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle/zipball/e8ac2745616eada0905714455772979306012ba1",
-                "reference": "e8ac2745616eada0905714455772979306012ba1",
+                "url": "https://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle/zipball/f6ae7a808aa59f8f0bbd5b4e83e7a14bc5ec6310",
+                "reference": "f6ae7a808aa59f8f0bbd5b4e83e7a14bc5ec6310",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "cedriclombardot/admingenerator-activeadmintheme-bundle": "The rails admin theme",
                 "cedriclombardot/admingenerator-user-bundle": "Help you to overwrite the base layout of FOSUserBundle or others giving a parameter key of the container"
             },
-            "time": "1350114917",
+            "time": "1350065733",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -109,12 +109,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony2admingenerator/AdmingeneratorOldThemeBundle.git",
-                "reference": "8c0773536ef29d3811133314daa12d9a04609dff"
+                "reference": "892018a8b77d8c2c5382e090a3b4f80e54207f23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony2admingenerator/AdmingeneratorOldThemeBundle/zipball/8c0773536ef29d3811133314daa12d9a04609dff",
-                "reference": "8c0773536ef29d3811133314daa12d9a04609dff",
+                "url": "https://github.com/symfony2admingenerator/AdmingeneratorOldThemeBundle/zipball/892018a8b77d8c2c5382e090a3b4f80e54207f23",
+                "reference": "892018a8b77d8c2c5382e090a3b4f80e54207f23",
                 "shasum": ""
             },
             "require": {
@@ -123,7 +123,7 @@
             "suggest": {
                 "cedriclombardot/admingenerator-activeadmintheme-bundle": "The rails admin theme"
             },
-            "time": "1347465834",
+            "time": "1350065688",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
